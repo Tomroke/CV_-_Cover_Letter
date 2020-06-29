@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_cv"
+        android:icon="@drawable/ic_cv_employments"
+        android:title="@string/title_cv" />
+
+    <item
+        android:id="@+id/navigation_cover_letter"
+        android:icon="@drawable/ic_cover_letter"
+        android:title="@string/title_cover_letter" />
+
+    <item
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/ic_contact_me"
+        android:title="@string/title_contact" />
+
+</menu>
