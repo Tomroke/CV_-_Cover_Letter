@@ -6,20 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class CVViewModel : ViewModel() {
+    private val _cvName = MutableLiveData("J. Tommy Irving")
+    private val _cvAddress = MutableLiveData("Ringvägen 78, Stockholm")
+    private val _cvPhone = MutableLiveData("070 336 71 90")
+    private val _cvEmail = MutableLiveData("j.t.i@hotmail.se")
 
-    private val programmer: MutableLiveData<MutableMap<String, String>> = MutableLiveData(mutableMapOf())
-
-    init {
-        programmer.value!!["name"] = ("J. Tommy Irving")
-        programmer.value!!["address"] = ("Ringvägen 78, Stockholm")
-        programmer.value!!["numb"] = ("070 336 71 90")
-        programmer.value!!["email"] = ("j.t.i@hotmail.se")
-    }
-
-    fun getProgrammer(): MutableLiveData<MutableMap<String, String>> {
-        return programmer
-    }
-
-
+    val cvName: LiveData<String> = _cvName
+    val cvAddress: LiveData<String> = _cvAddress
+    val cvPhone: LiveData<String> = _cvPhone
+    val cvEmail: LiveData<String> = _cvEmail
 
 }
