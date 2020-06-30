@@ -1,13 +1,13 @@
-package com.example.cvpersonalletter.ui.cv
+package com.example.cvpersonalletter.ui.contactme
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CVViewModel : ViewModel() {
+class ContactMeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "Contact Me"
     }
     val text: LiveData<String> = _text
 }

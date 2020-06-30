@@ -1,30 +1,13 @@
-package com.example.cvpersonalletter
+package com.example.cvpersonalletter.viewpager.fragment
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Button
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.cvpersonalletter.adapters.CONTACT_ME_INDEX
-import com.example.cvpersonalletter.adapters.COVER_LETTER_INDEX
-import com.example.cvpersonalletter.adapters.CV_INDEX
-import com.example.cvpersonalletter.adapters.ViewPagerAdapter
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.cvpersonalletter.R
+import com.example.cvpersonalletter.viewpager.adapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -32,7 +15,13 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment() {
 
     private lateinit var viewPager: ViewPager2
-    private lateinit var viewPagerAdapeter: ViewPagerAdapter
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
+
+    private val tabIcons: IntArray = intArrayOf(
+        R.drawable.ic_cv_employments,
+        R.drawable.ic_cover_letter,
+        R.drawable.ic_contact_me
+    )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
@@ -41,9 +30,18 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewPager = view_pager
-        viewPagerAdapeter = ViewPagerAdapter(this)
-        viewPager.adapter = viewPagerAdapeter
+        viewPagerAdapter =
+            ViewPagerAdapter(this)
+        viewPager.adapter = viewPagerAdapter
 
+        TabLayoutMediator(tab_layout, viewPager) { tab, position ->
+            tab.setIcon(tabIcons[position])
+            when(position){
+                0 -> { tab.text = getString(R.string.title_cv) }
+                1 -> { tab.text = getString(R.string.title_cover_letter) }
+                2 -> { tab.text = getString(R.string.title_contact) }
+            }
+        }.attach()
 
 
 

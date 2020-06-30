@@ -1,4 +1,4 @@
-package com.example.cvpersonalletter.ui.dashboard
+package com.example.cvpersonalletter.ui.contactme
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.cvpersonalletter.R
 
-class DashboardFragment : Fragment() {
+class ContactMeFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var contactMeViewModel: ContactMeViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        contactMeViewModel =
+                ViewModelProviders.of(this).get(ContactMeViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_contact_me, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        contactMeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

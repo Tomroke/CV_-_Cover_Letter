@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/navigation_cv"
-        android:name="com.example.cvpersonalletter.MainFragment"
+        android:name="com.example.cvpersonalletter.viewpager.fragment.MainFragment"
         android:label="@string/MainFragment"
         tools:layout="@layout/fragment_main">
     </fragment>

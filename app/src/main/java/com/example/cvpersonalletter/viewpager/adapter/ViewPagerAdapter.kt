@@ -1,21 +1,21 @@
-package com.example.cvpersonalletter.adapters
+package com.example.cvpersonalletter.viewpager.adapter
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.cvpersonalletter.ui.cv.CVFragment
-import com.example.cvpersonalletter.ui.dashboard.DashboardFragment
-import com.example.cvpersonalletter.ui.home.HomeFragment
+import com.example.cvpersonalletter.ui.cv.fragments.CVFragment
+import com.example.cvpersonalletter.ui.coverletter.CoverLetterFragment
+import com.example.cvpersonalletter.ui.contactme.ContactMeFragment
 
 const val CV_INDEX = 0
 const val COVER_LETTER_INDEX = 1
 const val CONTACT_ME_INDEX = 2
+
 class ViewPagerAdapter (fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         CV_INDEX to { CVFragment() },
-        COVER_LETTER_INDEX to { DashboardFragment()},
-        CONTACT_ME_INDEX to {HomeFragment()}
+        COVER_LETTER_INDEX to { CoverLetterFragment()},
+        CONTACT_ME_INDEX to {ContactMeFragment()}
     )
 
     override fun getItemCount() = tabFragmentsCreators.size
