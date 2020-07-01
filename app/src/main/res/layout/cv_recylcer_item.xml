@@ -31,16 +31,19 @@
         app:layout_constraintStart_toEndOf="@id/workplace_image" />
 
     <TextView
-        android:id="@+id/workplace_desc_string"
+        android:id="@+id/workplace_employer_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
-        android:text="YEST"
-        android:textSize="12sp"
-        android:textAlignment="textStart"
-        android:gravity="start"
+        android:text="TEST"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
         app:layout_constraintTop_toBottomOf="@id/workplace_title_string"
-        app:layout_constraintStart_toEndOf="@id/workplace_image" />
+        app:layout_constraintBottom_toBottomOf="@id/workplace_image"
+        app:layout_constraintStart_toEndOf="@id/workplace_image"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
