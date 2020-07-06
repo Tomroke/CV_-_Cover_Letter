@@ -3,6 +3,7 @@ package com.example.cvpersonalletter.ui.cv.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
 class CVViewModel : ViewModel() {
