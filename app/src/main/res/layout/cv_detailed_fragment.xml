@@ -1,13 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.cv.fragments.CVDetailsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".ui.cv.fragments.CVDetailsFragment">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/cv_detailed_image"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_margin="6dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/cv_detailed_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TITLE"
+            android:textSize="30sp"
+            android:textColor="@color/txt_black"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/cv_detailed_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/cv_detailed_employer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMPLOYER"
+            android:textSize="24sp"
+            android:textColor="@color/txt_black"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/cv_detailed_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/cv_first_para"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARA"
+            android:textSize="16sp"
+            android:textColor="@color/txt_black"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/cv_detailed_employer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/cv_second_para"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARA"
+            android:textSize="16sp"
+            android:textColor="@color/txt_black"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/cv_first_para"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/cv_third_para"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARA"
+            android:textSize="16sp"
+            android:textColor="@color/txt_black"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/cv_second_para"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
