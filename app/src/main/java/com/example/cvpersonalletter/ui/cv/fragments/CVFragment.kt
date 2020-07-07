@@ -35,17 +35,20 @@ class CVFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewmodel = cvViewModel
 
+        workplaceAdapter = WorkplaceAdapter()
+        binding.cvRecyclerview.adapter = workplaceAdapter
+        binding.cvRecyclerview.layoutManager = _layoutManager
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = view.cv_recyclerview
-        workplaceAdapter = WorkplaceAdapter(10)
-        recyclerView.apply {
-            layoutManager = _layoutManager
-            adapter = workplaceAdapter
-        }
+//        recyclerView = view.cv_recyclerview
+//        recyclerView.apply {
+//            layoutManager = _layoutManager
+//            adapter = workplaceAdapter
+//        }
     }
 
 }

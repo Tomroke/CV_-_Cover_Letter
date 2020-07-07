@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="work"
+            type="com.example.cvpersonalletter.data.Work" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
+        android:onClick="@{clickListener}"
         >
 
         <ImageView
@@ -22,13 +28,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
+        <!--            app:imageFromUrl="@{work.image}"-->
 
         <TextView
             android:id="@+id/workplace_title_string"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:text="TEST"
+            android:text="@{work.title}"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -43,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:text="TEST"
+            android:text="@{work.employer}"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textAlignment="textStart"
