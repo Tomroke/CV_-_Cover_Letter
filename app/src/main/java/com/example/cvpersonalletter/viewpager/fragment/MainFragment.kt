@@ -30,8 +30,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewPager = view_pager
-        viewPagerAdapter =
-            ViewPagerAdapter(this)
+        viewPagerAdapter = ViewPagerAdapter(this)
         viewPager.adapter = viewPagerAdapter
 
         TabLayoutMediator(tab_layout, viewPager) { tab, position ->
@@ -43,15 +42,6 @@ class MainFragment : Fragment() {
             }
         }.attach()
 
-
-
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-//
-//        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_cv, R.id.navigation_cover_letter, R.id.navigation_contact))
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//
-//        navView.setupWithNavController(navController)
     }
 
 }

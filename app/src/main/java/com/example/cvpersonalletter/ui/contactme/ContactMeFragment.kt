@@ -19,13 +19,13 @@ class ContactMeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        contactMeViewModel =
-                ViewModelProviders.of(this).get(ContactMeViewModel::class.java)
+//        contactMeViewModel =
+//                ViewModelProviders.of(this).get(ContactMeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_contact_me, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        contactMeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+//        val textView: TextView = root.findViewById(R.id.text_home)
+//        contactMeViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         return root
     }
 }

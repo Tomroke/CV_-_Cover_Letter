@@ -19,13 +19,13 @@ class CoverLetterFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        coverLetterViewModel =
-                ViewModelProviders.of(this).get(CoverLetterViewModel::class.java)
+//        coverLetterViewModel =
+//                ViewModelProviders.of(this).get(CoverLetterViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_cover_letter, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        coverLetterViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+//        val textView: TextView = root.findViewById(R.id.text_dashboard)
+//        coverLetterViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         return root
     }
 }

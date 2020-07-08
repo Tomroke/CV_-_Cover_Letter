@@ -5,6 +5,11 @@
 
     <data>
 
+        <import type="com.example.cvpersonalletter.data.Work"/>
+
+        <variable
+            name="viewModel"
+            type="com.example.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +32,8 @@
             android:id="@+id/cv_detailed_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TITLE"
+            tools:text="TITLE"
+            android:text="@{viewModel.work.title}"
             android:textSize="30sp"
             android:textColor="@color/txt_black"
             android:textAlignment="center"
@@ -42,7 +48,8 @@
             android:id="@+id/cv_detailed_employer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="EMPLOYER"
+            tools:text="EMPLOYER"
+            android:text="@{viewModel.work.employer}"
             android:textSize="24sp"
             android:textColor="@color/txt_black"
             android:textAlignment="center"
@@ -58,7 +65,8 @@
             android:id="@+id/cv_first_para"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PARA"
+            tools:text="PARA"
+            android:text="@{viewModel.work.paraOne}"
             android:textSize="16sp"
             android:textColor="@color/txt_black"
             android:textAlignment="center"
@@ -74,7 +82,8 @@
             android:id="@+id/cv_second_para"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PARA"
+            tools:text="PARA"
+            android:text="@{viewModel.work.paraTwo}"
             android:textSize="16sp"
             android:textColor="@color/txt_black"
             android:textAlignment="center"
@@ -90,7 +99,8 @@
             android:id="@+id/cv_third_para"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PARA"
+            tools:text="PARA"
+            android:text="@{viewModel.work.paraThree}"
             android:textSize="16sp"
             android:textColor="@color/txt_black"
             android:textAlignment="center"

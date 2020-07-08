@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,40 +14,27 @@ import com.example.cvpersonalletter.R
 import com.example.cvpersonalletter.databinding.FragmentCvBinding
 import com.example.cvpersonalletter.ui.cv.adapters.WorkplaceAdapter
 import com.example.cvpersonalletter.ui.cv.viewmodel.CVViewModel
-import kotlinx.android.synthetic.main.fragment_cv.*
-import kotlinx.android.synthetic.main.fragment_cv.view.*
 
 private const val SPANCOUNT: Int = 2
 
 class CVFragment : Fragment() {
 
-    private val cvViewModel: CVViewModel by viewModels()
-    private lateinit var recyclerView: RecyclerView
+    private val viewModel: CVViewModel by viewModels()
     private lateinit var workplaceAdapter: WorkplaceAdapter
     private lateinit var _layoutManager: LinearLayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        cvViewModel = ViewModelProvider(this).get(CVViewModel::class.java)
         _layoutManager = GridLayoutManager(context, SPANCOUNT, RecyclerView.VERTICAL, false)
 
         val binding: FragmentCvBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_cv, container, false)
         binding.lifecycleOwner = this
-        binding.viewmodel = cvViewModel
+        binding.viewmodel = this.viewModel
 
         workplaceAdapter = WorkplaceAdapter()
         binding.cvRecyclerview.adapter = workplaceAdapter
         binding.cvRecyclerview.layoutManager = _layoutManager
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-//        recyclerView = view.cv_recyclerview
-//        recyclerView.apply {
-//            layoutManager = _layoutManager
-//            adapter = workplaceAdapter
-//        }
     }
 
 }
