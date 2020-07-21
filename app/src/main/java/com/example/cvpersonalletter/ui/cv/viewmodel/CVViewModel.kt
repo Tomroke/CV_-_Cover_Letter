@@ -12,9 +12,17 @@ class CVViewModel : ViewModel() {
     private val _cvPhone = MutableLiveData("070 336 71 90")
     private val _cvEmail = MutableLiveData("j.t.i@hotmail.se")
 
-    val cvName: LiveData<String> = _cvName
-    val cvAddress: LiveData<String> = _cvAddress
-    val cvPhone: LiveData<String> = _cvPhone
-    val cvEmail: LiveData<String> = _cvEmail
+    val cvName: LiveData<String>
+        get() = _cvName
+
+    val cvAddress: LiveData<String>
+        get() = _cvAddress
+
+    val cvPhone: LiveData<String>
+        get() = _cvPhone
+
+    val cvEmail: LiveData<String>
+        get() = _cvEmail
+
 
 }

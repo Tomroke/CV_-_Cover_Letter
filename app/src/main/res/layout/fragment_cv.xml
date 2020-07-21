@@ -36,12 +36,11 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
                     android:text="@{viewmodel.cvName}"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:gravity="center_horizontal"
-                    android:textStyle="bold"
+                    style="@style/ImportantFillerTxt"
+                    tools:text="Cv Name"
                     app:layout_constraintTop_toTopOf="@+id/profile_image"
-                    app:layout_constraintStart_toEndOf="@+id/profile_image" />
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    />
 
 
                 <TextView
@@ -54,12 +53,11 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
                     android:text="@{viewmodel.cvAddress}"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
+                    style="@style/ImportantFillerTxt"
+                    tools:text="Cv Address"
                     app:layout_constraintTop_toBottomOf="@+id/cv_name"
-                    app:layout_constraintStart_toEndOf="@+id/profile_image" />
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    />
 
 
                 <TextView
@@ -72,12 +70,11 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
                     android:text="@{viewmodel.cvPhone}"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
+                    style="@style/ImportantFillerTxt"
+                    tools:text="cv Phone"
                     app:layout_constraintTop_toBottomOf="@+id/cv_address"
-                    app:layout_constraintStart_toEndOf="@+id/profile_image" />
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    />
 
                 <TextView
                     android:id="@+id/cv_email"
@@ -89,12 +86,11 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
                     android:text="@{viewmodel.cvEmail}"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
+                    style="@style/ImportantFillerTxt"
+                    tools:text="cv email"
                     app:layout_constraintTop_toBottomOf="@+id/cv_phone"
-                    app:layout_constraintStart_toEndOf="@+id/profile_image" />
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    />
 
 
                 <androidx.recyclerview.widget.RecyclerView
