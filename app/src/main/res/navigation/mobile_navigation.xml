@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/navigation_cv"
-        android:name="com.example.cvpersonalletter.viewpager.fragment.MainFragment"
+        android:name="com.irving.cvpersonalletter.viewpager.fragment.MainFragment"
         android:label="@string/MainFragment"
         tools:layout="@layout/fragment_main">
         <action
@@ -18,10 +18,14 @@
 
     <fragment
         android:id="@+id/CVDetailsFragment"
-        android:name="com.example.cvpersonalletter.ui.cv.fragments.CVDetailsFragment"
+        android:name="com.irving.cvpersonalletter.ui.cv.fragments.CVDetailsFragment"
         android:label="cv_detailed_fragment"
-        tools:layout="@layout/cv_detailed_fragment"
-        />
+        tools:layout="@layout/cv_detailed_fragment">
+        <argument
+            android:name="weIdArg"
+            app:argType="string"
+            />
+        </fragment>
 
 
 </navigation>

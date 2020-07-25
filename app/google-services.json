@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1001773128683",
+    "firebase_url": "https://cvncoverletter.firebaseio.com",
+    "project_id": "cvncoverletter",
+    "storage_bucket": "cvncoverletter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001773128683:android:113537c901cf44f380d7ae",
+        "android_client_info": {
+          "package_name": "com.irving.cvpersonalletter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001773128683-0fro2na1ju7qhq7ttg6n7jrk8i8rcc9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlRu5N8XXzbi2ZlIKoXYMKLDpMlzXxfEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001773128683-0fro2na1ju7qhq7ttg6n7jrk8i8rcc9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

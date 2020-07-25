@@ -7,7 +7,7 @@
         <data>
                 <variable
                     name="viewmodel"
-                    type="com.example.cvpersonalletter.ui.cv.viewmodel.CVViewModel"
+                    type="com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModel"
                     />
         </data>
 
