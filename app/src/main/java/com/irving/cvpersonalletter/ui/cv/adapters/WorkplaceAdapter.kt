@@ -1,53 +1,48 @@
 package com.irving.cvpersonalletter.ui.cv.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.irving.cvpersonalletter.R
 import com.irving.cvpersonalletter.database.CVData
 import com.irving.cvpersonalletter.databinding.CvRecylcerItemBinding
-import com.irving.cvpersonalletter.ui.cv.fragments.CVDetailsFragment
+import com.irving.cvpersonalletter.ui.cv.fragments.CVFragmentDirections
 
-class WorkplaceAdapter: ListAdapter<CVData, RecyclerView.ViewHolder>(
-    WorkDiffCallback()
-){
+class WorkplaceAdapter(val clickListener: CVListener): ListAdapter<CVData, RecyclerView.ViewHolder>( WorkDiffCallback() ){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return CVHolder(
-            CvRecylcerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder { return from(parent) }
 
     //TODO REMOVE ONCE BACKEND DATA IS AVAILABLE
     override fun getItemCount() = 10
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        val work = getItem(position)
-        val work = CVData("5")
-        (holder as CVHolder).bind(work)
+        //TODO HOCK UP WITH ACTUAL DATA
+        val cv = CVData()
+        (holder as CVHolder).bind(clickListener, cv)
     }
 
-    class CVHolder(private val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class CVHolder (private val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {
 
-        init {
-            binding.setClickListener {//R.id.action_detailed_look_at_cv_item
-                binding.root.findNavController().navigate(R.id.action_detailed_look_at_cv_item)
-            }
-        }
-
-        fun bind(item: CVData) {
+        fun bind(cvClickListener: CVListener, item: CVData) {
             binding.apply {
-                work = item
+                cv = item
+                clickListener = cvClickListener
                 executePendingBindings()
             }
         }
     }
 
-    private class WorkDiffCallback : DiffUtil.ItemCallback<CVData>() {
+    class CVListener(val clickListener: (cvId: String) -> Unit){
+        fun onClick(cvData: CVData) = clickListener(cvData.cvId)
+    }
 
+    private class WorkDiffCallback : DiffUtil.ItemCallback<CVData>() {
         override fun areItemsTheSame(oldItem: CVData, newItem: CVData): Boolean {
             return oldItem == newItem
         }
@@ -57,4 +52,9 @@ class WorkplaceAdapter: ListAdapter<CVData, RecyclerView.ViewHolder>(
         }
     }
 
+    companion object {
+        private fun from(parent: ViewGroup): CVHolder {
+            return CVHolder( CvRecylcerItemBinding.inflate( LayoutInflater.from(parent.context), parent, false ) )
+        }
+    }
 }

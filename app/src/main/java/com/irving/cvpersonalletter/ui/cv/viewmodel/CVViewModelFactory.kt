@@ -2,7 +2,7 @@ package com.irving.cvpersonalletter.ui.cv.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.irving.cvpersonalletter.database.CVFireDAO
+import com.irving.cvpersonalletter.database.firebase.CVFireDAO
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi

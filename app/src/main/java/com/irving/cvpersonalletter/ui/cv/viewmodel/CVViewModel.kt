@@ -3,10 +3,9 @@ package com.irving.cvpersonalletter.ui.cv.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.irving.cvpersonalletter.database.CVData
-import com.irving.cvpersonalletter.database.CVFireDAO
+import com.irving.cvpersonalletter.database.firebase.CVFireDAO
 import kotlinx.coroutines.*
 
 @ExperimentalCoroutinesApi
@@ -31,9 +30,19 @@ class CVViewModel(val database: CVFireDAO) : ViewModel() {
     val cvEmail: LiveData<String>
         get() = _cvEmail
 
+
     private var _allCV = MutableLiveData<MutableList<CVData>>()
     val allCv: LiveData<MutableList<CVData>>
         get() = _allCV
+
+
+    private val _navigateToDetailedCV = MutableLiveData<String>()
+    val navigateToDetailedCV
+        get() = _navigateToDetailedCV
+
+    fun onCVClicked(id: String) { _navigateToDetailedCV.value = id }
+    fun onCVClickedNavigated() { _navigateToDetailedCV.value = null }
+
 
     init {
         startFetchingAllCV()

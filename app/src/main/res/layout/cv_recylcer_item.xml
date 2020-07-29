@@ -6,58 +6,71 @@
 
     <data>
         <variable
-            name="work"
+            name="cv"
             type="com.irving.cvpersonalletter.database.CVData" />
         <variable
             name="clickListener"
-            type="android.view.View.OnClickListener" />
+            type="com.irving.cvpersonalletter.ui.cv.adapters.WorkplaceAdapter.CVListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:onClick="@{clickListener}"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:padding="8dp"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="20dp"
         >
 
-        <ImageView
-            android:id="@+id/workplace_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_margin="@dimen/medium_margin"
-            android:background="@color/colorPrimaryDark"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-        <!--            app:imageFromUrl="@{work.image}"-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:onClick="@{() -> clickListener.onClick(cv)}"
+            >
 
-        <TextView
-            android:id="@+id/workplace_title_string"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/medium_margin"
-            android:text="@{work.title}"
-            style="@style/HeaderBeta"
-            tools:text="Workplace"
-            app:layout_constraintTop_toBottomOf="@id/workplace_image"
-            app:layout_constraintStart_toStartOf="@id/workplace_image"
-            app:layout_constraintEnd_toEndOf="@id/workplace_image"
-            />
+            <ImageView
+                android:id="@+id/workplace_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/medium_margin"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+            <!--            app:imageFromUrl="@{work.image}"-->
 
-        <TextView
-            android:id="@+id/workplace_employer_string"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/medium_margin"
-            android:text="@{work.employer}"
-            style="@style/HeaderOmega"
-            tools:text="Employer"
-            app:layout_constraintTop_toBottomOf="@id/workplace_title_string"
-            app:layout_constraintStart_toStartOf="@id/workplace_title_string"
-            app:layout_constraintEnd_toEndOf="@id/workplace_title_string"
-            />
+            <TextView
+                android:id="@+id/workplace_title_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/medium_margin"
+                android:text="@{cv.title}"
+                style="@style/HeaderBeta"
+                tools:text="Workplace"
+                app:layout_constraintTop_toBottomOf="@id/workplace_image"
+                app:layout_constraintStart_toStartOf="@id/workplace_image"
+                app:layout_constraintEnd_toEndOf="@id/workplace_image"
+                />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/workplace_employer_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/medium_margin"
+                android:text="@{cv.employer}"
+                style="@style/HeaderOmega"
+                tools:text="Employer"
+                app:layout_constraintTop_toBottomOf="@id/workplace_title_string"
+                app:layout_constraintStart_toStartOf="@id/workplace_title_string"
+                app:layout_constraintEnd_toEndOf="@id/workplace_title_string"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </layout>

@@ -6,14 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModel
 import com.irving.cvpersonalletter.R
-import com.irving.cvpersonalletter.database.CVFireDAO
+import com.irving.cvpersonalletter.database.firebase.CVFireDAO
 import com.irving.cvpersonalletter.databinding.CvDetailedFragmentBinding
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailedViewModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -30,11 +29,15 @@ class CVDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        //TODO REMOVE TEST CODE
         viewModel.work.observe(viewLifecycleOwner, Observer {
             if(it != null){
                 Log.i("FireDB", "This is the data : $it")
             }
         })
+
+        val arg = CVDetailsFragmentArgs.fromBundle(requireArguments())
+        Toast.makeText(context, "ID : ${arg.cvSafeArg}", Toast.LENGTH_SHORT).show()
 
         return binding.root
     }
