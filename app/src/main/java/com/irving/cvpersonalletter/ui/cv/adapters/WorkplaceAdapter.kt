@@ -1,39 +1,37 @@
 package com.irving.cvpersonalletter.ui.cv.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.irving.cvpersonalletter.R
 import com.irving.cvpersonalletter.database.CVData
 import com.irving.cvpersonalletter.databinding.CvRecylcerItemBinding
-import com.irving.cvpersonalletter.ui.cv.fragments.CVFragmentDirections
 
-class WorkplaceAdapter(val clickListener: CVListener): ListAdapter<CVData, RecyclerView.ViewHolder>( WorkDiffCallback() ){
+class WorkplaceAdapter(private val clickListener: CVListener): ListAdapter<CVData, RecyclerView.ViewHolder>( WorkDiffCallback() ){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder { return from(parent) }
-
-    //TODO REMOVE ONCE BACKEND DATA IS AVAILABLE
-    override fun getItemCount() = 10
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        //TODO HOCK UP WITH ACTUAL DATA
-        val cv = CVData()
-        (holder as CVHolder).bind(clickListener, cv)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return CVHolder.from(parent)
     }
 
-    class CVHolder (private val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val cvItem = getItem(position)
+        (holder as CVHolder).bind(clickListener, cvItem)
+    }
+
+    class CVHolder private constructor(val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(cvClickListener: CVListener, item: CVData) {
-            binding.apply {
-                cv = item
-                clickListener = cvClickListener
-                executePendingBindings()
+            binding.cv = item
+            binding.clickListener = cvClickListener
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): CVHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = CvRecylcerItemBinding.inflate( layoutInflater, parent, false )
+                return CVHolder(binding)
             }
         }
     }
@@ -52,9 +50,4 @@ class WorkplaceAdapter(val clickListener: CVListener): ListAdapter<CVData, Recyc
         }
     }
 
-    companion object {
-        private fun from(parent: ViewGroup): CVHolder {
-            return CVHolder( CvRecylcerItemBinding.inflate( LayoutInflater.from(parent.context), parent, false ) )
-        }
-    }
 }

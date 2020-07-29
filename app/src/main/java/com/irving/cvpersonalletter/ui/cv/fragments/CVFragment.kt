@@ -52,10 +52,8 @@ class CVFragment : Fragment() {
         binding.cvRecyclerview.layoutManager = layoutManager
 
         viewModel.allCv.observe(viewLifecycleOwner, Observer {
-            if (it != null){
-                for (map in it){
-                    Log.i("FireDB", "All maps : $map")
-                }
+            it.let {
+                workplaceAdapter.submitList(it)
             }
         })
 

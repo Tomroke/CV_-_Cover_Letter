@@ -51,7 +51,6 @@ class CVViewModel(val database: CVFireDAO) : ViewModel() {
     fun startFetchingAllCV(){
         uiScope.launch {
             _allCV.value = getAllCVFromFirebase()
-            Log.i("FireDB", "in launch \n${_allCV.value}")
         }
     }
 

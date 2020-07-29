@@ -36,6 +36,7 @@ class CVDetailsFragment : Fragment() {
             }
         })
 
+        //TODO REMOVE TEST CODE
         val arg = CVDetailsFragmentArgs.fromBundle(requireArguments())
         Toast.makeText(context, "ID : ${arg.cvSafeArg}", Toast.LENGTH_SHORT).show()
 
