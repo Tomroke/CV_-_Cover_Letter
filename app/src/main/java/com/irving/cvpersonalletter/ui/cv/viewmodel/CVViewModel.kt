@@ -1,15 +1,14 @@
 package com.irving.cvpersonalletter.ui.cv.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.irving.cvpersonalletter.database.CVData
-import com.irving.cvpersonalletter.database.firebase.CVFireDAO
+import com.irving.cvpersonalletter.database.Repository
 import kotlinx.coroutines.*
 
 @ExperimentalCoroutinesApi
-class CVViewModel(val database: CVFireDAO) : ViewModel() {
+class CVViewModel(val database: Repository) : ViewModel() {
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -36,11 +35,11 @@ class CVViewModel(val database: CVFireDAO) : ViewModel() {
         get() = _allCV
 
 
-    private val _navigateToDetailedCV = MutableLiveData<String>()
+    private val _navigateToDetailedCV = MutableLiveData<Int>()
     val navigateToDetailedCV
         get() = _navigateToDetailedCV
 
-    fun onCVClicked(id: String) { _navigateToDetailedCV.value = id }
+    fun onCVClicked(id: Int) { _navigateToDetailedCV.value = id }
     fun onCVClickedNavigated() { _navigateToDetailedCV.value = null }
 
 

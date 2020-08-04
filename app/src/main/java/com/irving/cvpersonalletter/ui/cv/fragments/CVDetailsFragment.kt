@@ -8,22 +8,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModel
 import com.irving.cvpersonalletter.R
+import com.irving.cvpersonalletter.database.Repository
 import com.irving.cvpersonalletter.database.firebase.CVFireDAO
+import com.irving.cvpersonalletter.database.room.AppDatabase
 import com.irving.cvpersonalletter.databinding.CvDetailedFragmentBinding
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailedViewModelFactory
+import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModel
+import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class CVDetailsFragment : Fragment() {
+
+    private val viewModel: CVDetailsViewModel by viewModels {
+        CVDetailedViewModelFactory( dataSource = Repository.getInstance(
+            CVFireDAO(),
+            AppDatabase.getInstance(context?.applicationContext!!).cvDao()
+        ))
+    }
 
     @ExperimentalCoroutinesApi
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val viewModelFactory = CVDetailedViewModelFactory(dataSource = CVFireDAO())
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(CVDetailsViewModel::class.java)
 
         val binding: CvDetailedFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.cv_detailed_fragment, container, false)
         binding.lifecycleOwner = this

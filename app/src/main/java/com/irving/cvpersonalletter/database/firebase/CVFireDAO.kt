@@ -12,14 +12,7 @@ class CVFireDAO: LiveData<CVData>(){
     private val TAG: String = "FireDB"
     private val db = FirebaseFirestore.getInstance().collection("cvTest")
 
-
-    //TODO GET CV ID
-    suspend fun getSingleCV(cvId: String): CVData? {
-        val snapshot = db.document(cvId).get().await()
-        return snapshot.toObject(CVData::class.java)
-    }
-
-    suspend fun getAllCV(): MutableList<CVData>{
+    suspend fun getAllCVFromFire(): MutableList<CVData>{
         val cvDataList: MutableList<CVData> = mutableListOf()
         val snapshot = db.get().await()
         for (snap in snapshot){

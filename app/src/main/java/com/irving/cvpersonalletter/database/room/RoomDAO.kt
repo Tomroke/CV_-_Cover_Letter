@@ -8,7 +8,7 @@ import androidx.room.Update
 import com.irving.cvpersonalletter.database.CVData
 
 @Dao
-interface CVDatabaseDao {
+interface RoomDAO {
 
     @Insert
     fun insert (cv: CVData)

@@ -8,7 +8,7 @@ import com.irving.cvpersonalletter.database.CVData
 
 @Database(entities = [CVData::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase(){
-    abstract fun cvDao(): CVDatabaseDao
+    abstract fun cvDao(): RoomDAO
 
     companion object{
         @Volatile

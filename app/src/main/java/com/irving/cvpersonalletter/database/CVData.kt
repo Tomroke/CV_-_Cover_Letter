@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cv_table")
 data class CVData(
     @PrimaryKey(autoGenerate = true)
-    val cvId: String = "0",
+    val cvId: Int = 0,
 
     @ColumnInfo(name = "imageUrl")
     val image: String = "image mock",

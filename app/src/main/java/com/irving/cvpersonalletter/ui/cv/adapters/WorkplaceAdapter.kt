@@ -36,7 +36,7 @@ class WorkplaceAdapter(private val clickListener: CVListener): ListAdapter<CVDat
         }
     }
 
-    class CVListener(val clickListener: (cvId: String) -> Unit){
+    class CVListener(val clickListener: (cvId: Int) -> Unit){
         fun onClick(cvData: CVData) = clickListener(cvData.cvId)
     }
 
