@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.irving.cvpersonalletter.InjectorUtils
 import com.irving.cvpersonalletter.R
 import com.irving.cvpersonalletter.database.Repository
 import com.irving.cvpersonalletter.database.firebase.CVFireDAO
@@ -26,12 +27,7 @@ private const val SPANCOUNT: Int = 2
 @ExperimentalCoroutinesApi
 class CVFragment : Fragment() {
 
-    private val viewModel: CVViewModel by viewModels {
-        CVViewModelFactory( dataSource = Repository.getInstance(
-            CVFireDAO(),
-            AppDatabase.getInstance(context?.applicationContext!!).cvDao()
-        ))
-    }
+    private val viewModel: CVViewModel by viewModels { InjectorUtils.provideCVViewModelFactory(this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layoutManager = GridLayoutManager(context,  SPANCOUNT, RecyclerView.VERTICAL, false)

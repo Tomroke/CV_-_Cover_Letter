@@ -10,27 +10,16 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import com.irving.cvpersonalletter.InjectorUtils
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModel
 import com.irving.cvpersonalletter.R
-import com.irving.cvpersonalletter.database.Repository
-import com.irving.cvpersonalletter.database.firebase.CVFireDAO
-import com.irving.cvpersonalletter.database.room.AppDatabase
 import com.irving.cvpersonalletter.databinding.CvDetailedFragmentBinding
-import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailedViewModelFactory
-import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModel
-import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 class CVDetailsFragment : Fragment() {
 
-    private val viewModel: CVDetailsViewModel by viewModels {
-        CVDetailedViewModelFactory( dataSource = Repository.getInstance(
-            CVFireDAO(),
-            AppDatabase.getInstance(context?.applicationContext!!).cvDao()
-        ))
-    }
+    private val viewModel: CVDetailsViewModel by viewModels { InjectorUtils.provideCVDetailsViewModelFactory(this) }
 
     @ExperimentalCoroutinesApi
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

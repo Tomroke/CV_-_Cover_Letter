@@ -8,7 +8,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @Suppress("UNCHECKED_CAST")
-class CVDetailedViewModelFactory(private val dataSource: Repository): ViewModelProvider.Factory{
+class CVDetailsViewModelFactory(private val dataSource: Repository): ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CVDetailsViewModel::class.java)) {
             return CVDetailsViewModel(dataSource) as T
