@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import com.irving.cvpersonalletter.database.Repository
 import com.irving.cvpersonalletter.database.firebase.CVFireDAO
 import com.irving.cvpersonalletter.database.room.AppDatabase
+import com.irving.cvpersonalletter.ui.contactme.ContactMeViewModelFactory
+import com.irving.cvpersonalletter.ui.coverletter.CoverLetterViewModelFactory
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModelFactory
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,6 +26,14 @@ object InjectorUtils {
 
     fun provideCVViewModelFactory(fragment: Fragment): CVViewModelFactory {
         return CVViewModelFactory(getRepository(fragment.requireContext()))
+    }
+
+    fun provideContactMeViewModel(fragment: Fragment): ContactMeViewModelFactory {
+        return ContactMeViewModelFactory(getRepository(fragment.requireContext()))
+    }
+
+    fun providCoverLetterViewModel(fragment: Fragment): CoverLetterViewModelFactory {
+        return CoverLetterViewModelFactory(getRepository(fragment.requireContext()))
     }
 
 }

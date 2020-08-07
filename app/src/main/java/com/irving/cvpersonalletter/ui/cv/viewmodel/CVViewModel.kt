@@ -1,5 +1,6 @@
 package com.irving.cvpersonalletter.ui.cv.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,6 +46,7 @@ class CVViewModel(val database: Repository) : ViewModel() {
 
     init {
         startFetchingAllCV()
+//        roomFetch()
     }
 
     fun startFetchingAllCV(){
@@ -54,8 +56,15 @@ class CVViewModel(val database: Repository) : ViewModel() {
     }
 
     private suspend fun getAllCVFromFirebase(): MutableList<CVData> {
-        return database.getAllCV()
+        return database.getAllCVFromFire()
     }
+
+//    fun roomFetch(){
+//        uiScope.launch {
+//            val i = database.getAllCVFromRoom()
+//            Log.i("TEST", "$i")
+//        }
+//    }
 
     override fun onCleared() {
         super.onCleared()

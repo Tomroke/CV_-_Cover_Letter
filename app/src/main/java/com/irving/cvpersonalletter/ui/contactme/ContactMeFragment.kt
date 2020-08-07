@@ -4,28 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
+import com.irving.cvpersonalletter.InjectorUtils
 import com.irving.cvpersonalletter.R
+import com.irving.cvpersonalletter.databinding.FragmentContactMeBinding
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class ContactMeFragment : Fragment() {
 
-    private lateinit var contactMeViewModel: ContactMeViewModel
+    private val viewModel: ContactMeViewModel by viewModels { InjectorUtils.provideContactMeViewModel(this) }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-//        contactMeViewModel =
-//                ViewModelProviders.of(this).get(ContactMeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_contact_me, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_home)
-//        contactMeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-        return root
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
+
+        val binding: FragmentContactMeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_contact_me, container, false)
+
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        return binding.root
     }
 }

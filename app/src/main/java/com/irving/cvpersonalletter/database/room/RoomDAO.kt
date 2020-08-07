@@ -20,6 +20,6 @@ interface RoomDAO {
     fun getSingleCV(key: String): CVData?
 
     @Query("SELECT * FROM cv_table ORDER BY cvId DESC")
-    fun getAllCV(): LiveData<List<CVData>>
+    fun getAllCV(): MutableList<CVData>
 
 }

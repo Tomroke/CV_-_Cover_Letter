@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.irving.cvpersonalletter.ui.coverletter.CoverLetterViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

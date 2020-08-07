@@ -5,27 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.irving.cvpersonalletter.InjectorUtils
 import com.irving.cvpersonalletter.R
+import com.irving.cvpersonalletter.databinding.FragmentCoverLetterBinding
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class CoverLetterFragment : Fragment() {
 
-    private lateinit var coverLetterViewModel: CoverLetterViewModel
+    private val viewModel: CoverLetterViewModel by viewModels { InjectorUtils.providCoverLetterViewModel(this) }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-//        coverLetterViewModel =
-//                ViewModelProviders.of(this).get(CoverLetterViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_cover_letter, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_dashboard)
-//        coverLetterViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-        return root
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
+
+        val binding: FragmentCoverLetterBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_cover_letter, container,false)
+
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        return binding.root
     }
 }
