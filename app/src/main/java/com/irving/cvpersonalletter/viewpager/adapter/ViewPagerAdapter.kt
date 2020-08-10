@@ -5,11 +5,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.irving.cvpersonalletter.ui.cv.fragments.CVFragment
 import com.irving.cvpersonalletter.ui.coverletter.CoverLetterFragment
 import com.irving.cvpersonalletter.ui.contactme.ContactMeFragment
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 const val CV_INDEX = 0
 const val COVER_LETTER_INDEX = 1
 const val CONTACT_ME_INDEX = 2
 
+@ExperimentalCoroutinesApi
 class ViewPagerAdapter (fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(

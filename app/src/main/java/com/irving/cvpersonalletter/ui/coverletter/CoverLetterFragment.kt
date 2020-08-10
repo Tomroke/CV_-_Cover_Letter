@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.irving.cvpersonalletter.InjectorUtils
 import com.irving.cvpersonalletter.R
 import com.irving.cvpersonalletter.databinding.FragmentCoverLetterBinding
@@ -18,7 +15,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class CoverLetterFragment : Fragment() {
 
-    private val viewModel: CoverLetterViewModel by viewModels { InjectorUtils.providCoverLetterViewModel(this) }
+    private val viewModel: CoverLetterViewModel by viewModels { InjectorUtils.providCoverLetterViewModel() }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
 

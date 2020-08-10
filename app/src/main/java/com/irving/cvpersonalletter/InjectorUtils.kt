@@ -1,10 +1,7 @@
 package com.irving.cvpersonalletter
 
-import android.content.Context
-import androidx.fragment.app.Fragment
 import com.irving.cvpersonalletter.database.Repository
-import com.irving.cvpersonalletter.database.firebase.CVFireDAO
-import com.irving.cvpersonalletter.database.room.AppDatabase
+import com.irving.cvpersonalletter.database.CVFireDAO
 import com.irving.cvpersonalletter.ui.contactme.ContactMeViewModelFactory
 import com.irving.cvpersonalletter.ui.coverletter.CoverLetterViewModelFactory
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModelFactory
@@ -14,26 +11,26 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 object InjectorUtils {
 
-    private fun getRepository (context: Context): Repository{
+    private fun getRepository (): Repository{
         return Repository.getInstance(
-            CVFireDAO(),
-            AppDatabase.getInstance(context.applicationContext!!).cvDao())
+            CVFireDAO()
+        )
     }
 
-    fun provideCVDetailsViewModelFactory(fragment: Fragment): CVDetailsViewModelFactory{
-        return CVDetailsViewModelFactory(getRepository(fragment.requireContext()))
+    fun provideCVDetailsViewModelFactory(): CVDetailsViewModelFactory{
+        return CVDetailsViewModelFactory(getRepository())
     }
 
-    fun provideCVViewModelFactory(fragment: Fragment): CVViewModelFactory {
-        return CVViewModelFactory(getRepository(fragment.requireContext()))
+    fun provideCVViewModelFactory(): CVViewModelFactory {
+        return CVViewModelFactory(getRepository())
     }
 
-    fun provideContactMeViewModel(fragment: Fragment): ContactMeViewModelFactory {
-        return ContactMeViewModelFactory(getRepository(fragment.requireContext()))
+    fun provideContactMeViewModel(): ContactMeViewModelFactory {
+        return ContactMeViewModelFactory(getRepository())
     }
 
-    fun providCoverLetterViewModel(fragment: Fragment): CoverLetterViewModelFactory {
-        return CoverLetterViewModelFactory(getRepository(fragment.requireContext()))
+    fun providCoverLetterViewModel(): CoverLetterViewModelFactory {
+        return CoverLetterViewModelFactory(getRepository())
     }
 
 }

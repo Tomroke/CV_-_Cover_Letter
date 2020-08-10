@@ -15,7 +15,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class ContactMeFragment : Fragment() {
 
-    private val viewModel: ContactMeViewModel by viewModels { InjectorUtils.provideContactMeViewModel(this) }
+    private val viewModel: ContactMeViewModel by viewModels { InjectorUtils.provideContactMeViewModel() }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
 

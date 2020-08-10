@@ -1,4 +1,4 @@
-package com.irving.cvpersonalletter.database.firebase
+package com.irving.cvpersonalletter.database
 
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.FirebaseFirestore

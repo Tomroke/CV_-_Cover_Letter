@@ -19,7 +19,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class CVDetailsFragment : Fragment() {
 
-    private val viewModel: CVDetailsViewModel by viewModels { InjectorUtils.provideCVDetailsViewModelFactory(this) }
+    private val viewModel: CVDetailsViewModel by viewModels { InjectorUtils.provideCVDetailsViewModelFactory() }
 
     @ExperimentalCoroutinesApi
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

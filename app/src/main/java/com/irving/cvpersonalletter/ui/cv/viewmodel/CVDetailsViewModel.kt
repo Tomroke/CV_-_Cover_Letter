@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.irving.cvpersonalletter.database.CVData
 import com.irving.cvpersonalletter.database.Repository
-import com.irving.cvpersonalletter.database.firebase.CVFireDAO
 import kotlinx.coroutines.*
 
 @ExperimentalCoroutinesApi

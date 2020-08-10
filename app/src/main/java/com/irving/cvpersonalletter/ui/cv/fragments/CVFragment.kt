@@ -13,12 +13,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.irving.cvpersonalletter.InjectorUtils
 import com.irving.cvpersonalletter.R
-import com.irving.cvpersonalletter.database.Repository
-import com.irving.cvpersonalletter.database.firebase.CVFireDAO
-import com.irving.cvpersonalletter.database.room.AppDatabase
 import com.irving.cvpersonalletter.databinding.FragmentCvBinding
 import com.irving.cvpersonalletter.ui.cv.adapters.WorkplaceAdapter
-import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModelFactory
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -27,7 +23,7 @@ private const val SPANCOUNT: Int = 2
 @ExperimentalCoroutinesApi
 class CVFragment : Fragment() {
 
-    private val viewModel: CVViewModel by viewModels { InjectorUtils.provideCVViewModelFactory(this) }
+    private val viewModel: CVViewModel by viewModels { InjectorUtils.provideCVViewModelFactory() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layoutManager = GridLayoutManager(context,  SPANCOUNT, RecyclerView.VERTICAL, false)
