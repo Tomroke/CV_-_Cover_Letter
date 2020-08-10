@@ -1,0 +1,24 @@
+package com.irving.cvpersonalletter.database
+
+import kotlinx.coroutines.*
+
+@ExperimentalCoroutinesApi
+class Repository private constructor( private val fireDAO: CVFireDAO ){
+
+    suspend fun getAllCVFromFire(): MutableList<CVData> {
+        return fireDAO.getAllCVFromFire()
+    }
+
+    suspend fun getPersonalInfo(): PersonalInfoData {
+        return fireDAO.getPersonalInfo()
+    }
+
+    companion object{
+        @Volatile private var instance: Repository? = null
+        fun getInstance(fireDAO: CVFireDAO) =
+            instance ?: synchronized(this) {
+                instance ?: Repository(fireDAO).also { instance = it }
+            }
+    }
+
+}

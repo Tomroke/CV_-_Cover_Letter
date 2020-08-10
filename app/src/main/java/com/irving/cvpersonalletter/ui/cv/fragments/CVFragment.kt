@@ -1,6 +1,7 @@
 package com.irving.cvpersonalletter.ui.cv.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,10 @@ class CVFragment : Fragment() {
 
         val workplaceAdapter = WorkplaceAdapter(WorkplaceAdapter.CVListener {
                 id -> viewModel.onCVClicked(id)
+        })
+
+        viewModel.personalInfo.observe(viewLifecycleOwner, Observer {
+            Log.i("Test", "$it")
         })
 
         viewModel.navigateToDetailedCV.observe(viewLifecycleOwner, Observer { id ->

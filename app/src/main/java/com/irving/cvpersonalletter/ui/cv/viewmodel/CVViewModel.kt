@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.irving.cvpersonalletter.database.CVData
+import com.irving.cvpersonalletter.database.PersonalInfoData
 import com.irving.cvpersonalletter.database.Repository
 import kotlinx.coroutines.*
 
@@ -14,27 +15,13 @@ class CVViewModel(val database: Repository) : ViewModel() {
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _cvName = MutableLiveData("J. Tommy Irving")
-    val cvName: LiveData<String>
-        get() = _cvName
-
-    private val _cvAddress = MutableLiveData("Ringvägen 78, Stockholm")
-    val cvAddress: LiveData<String>
-        get() = _cvAddress
-
-    private val _cvPhone = MutableLiveData("070 336 71 90")
-    val cvPhone: LiveData<String>
-        get() = _cvPhone
-
-    private val _cvEmail = MutableLiveData("j.t.i@hotmail.se")
-    val cvEmail: LiveData<String>
-        get() = _cvEmail
-
+    private val _personalInfo = MutableLiveData<PersonalInfoData>()
+    val personalInfo: LiveData<PersonalInfoData>
+        get() = _personalInfo
 
     private var _allCV = MutableLiveData<MutableList<CVData>>()
     val allCv: LiveData<MutableList<CVData>>
         get() = _allCV
-
 
     private val _navigateToDetailedCV = MutableLiveData<Int>()
     val navigateToDetailedCV
@@ -45,11 +32,21 @@ class CVViewModel(val database: Repository) : ViewModel() {
 
 
     init {
+        startFetchingPersonalInfo()
         startFetchingAllCV()
-//        roomFetch()
     }
 
-    fun startFetchingAllCV(){
+    private fun startFetchingPersonalInfo(){
+        uiScope.launch {
+            _personalInfo.value = getPersonalInfoFromFirebase()
+        }
+    }
+
+    private suspend fun getPersonalInfoFromFirebase(): PersonalInfoData {
+        return database.getPersonalInfo()
+    }
+
+    private fun startFetchingAllCV(){
         uiScope.launch {
             _allCV.value = getAllCVFromFirebase()
         }
