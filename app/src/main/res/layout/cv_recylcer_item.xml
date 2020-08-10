@@ -6,7 +6,7 @@
 
     <data>
         <variable
-            name="cv"
+            name="cvData"
             type="com.irving.cvpersonalletter.database.CVData" />
         <variable
             name="clickListener"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp"
-            android:onClick="@{() -> clickListener.onClick(cv)}"
+            android:onClick="@{() -> clickListener.onClick(cvData)}"
             >
 
             <ImageView
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/medium_margin"
-                android:text="@{cv.title}"
+                android:text="@{cvData.title}"
                 style="@style/HeaderBeta"
                 tools:text="Workplace"
                 app:layout_constraintTop_toBottomOf="@id/workplace_image"
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/medium_margin"
-                android:text="@{cv.employer}"
+                android:text="@{cvData.employer}"
                 style="@style/HeaderOmega"
                 tools:text="Employer"
                 app:layout_constraintTop_toBottomOf="@id/workplace_title_string"

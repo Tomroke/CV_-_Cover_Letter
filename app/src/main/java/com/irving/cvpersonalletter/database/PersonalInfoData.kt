@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 
 data class PersonalInfoData (
     var name: String = "",
-    var adress: String = "",
+    val imageURL: String = "",
+    var address: String = "",
     var phone: String = "",
     var email: String = ""
     )

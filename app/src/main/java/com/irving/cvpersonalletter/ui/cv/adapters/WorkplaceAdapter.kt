@@ -1,5 +1,6 @@
 package com.irving.cvpersonalletter.ui.cv.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -19,10 +20,11 @@ class WorkplaceAdapter(private val clickListener: CVListener): ListAdapter<CVDat
         (holder as CVHolder).bind(clickListener, cvItem)
     }
 
-    class CVHolder private constructor(val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class CVHolder private constructor(private val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(cvClickListener: CVListener, item: CVData) {
-            binding.cv = item
+            Log.i("TEST ADAP", "${item}")
+            binding.cvData = item
             binding.clickListener = cvClickListener
             binding.executePendingBindings()
         }

@@ -56,12 +56,6 @@ class CVViewModel(val database: Repository) : ViewModel() {
         return database.getAllCVFromFire()
     }
 
-//    fun roomFetch(){
-//        uiScope.launch {
-//            val i = database.getAllCVFromRoom()
-//            Log.i("TEST", "$i")
-//        }
-//    }
 
     override fun onCleared() {
         super.onCleared()
