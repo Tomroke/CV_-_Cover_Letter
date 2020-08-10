@@ -13,6 +13,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestoreSettings
+import com.google.firebase.ktx.Firebase
 import com.irving.cvpersonalletter.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,5 +24,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val db = FirebaseFirestore.getInstance()
+        val settings = firestoreSettings { isPersistenceEnabled = true }
+        db.firestoreSettings = settings
     }
 }
