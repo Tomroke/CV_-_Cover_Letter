@@ -3,7 +3,9 @@ package com.irving.cvpersonalletter.database
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
 
@@ -24,6 +26,11 @@ class CVFireDAO: LiveData<CVData>(){
 
     suspend fun getPersonalInfo(): PersonalInfoData {
         val snapshot = dbPI.get().await()
+        return snapshot.first().toObject()
+    }
+
+    suspend fun getSingleCV(cvId: Int): CVData {
+        val snapshot = dbCV.whereEqualTo("cvId", cvId).get().await()
         return snapshot.first().toObject()
     }
 

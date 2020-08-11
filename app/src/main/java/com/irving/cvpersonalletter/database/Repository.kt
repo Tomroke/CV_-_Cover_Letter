@@ -13,6 +13,10 @@ class Repository private constructor( private val fireDAO: CVFireDAO ){
         return fireDAO.getPersonalInfo()
     }
 
+    suspend fun getSingleCv(cvId: Int): CVData{
+        return fireDAO.getSingleCV(cvId)
+    }
+
     companion object{
         @Volatile private var instance: Repository? = null
         fun getInstance(fireDAO: CVFireDAO) =

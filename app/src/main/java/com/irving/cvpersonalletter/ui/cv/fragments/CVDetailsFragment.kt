@@ -28,16 +28,12 @@ class CVDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        //TODO REMOVE TEST CODE
-        viewModel.work.observe(viewLifecycleOwner, Observer {
-            if(it != null){
-                Log.i("FireDB", "This is the data : $it")
-            }
-        })
-
-        //TODO REMOVE TEST CODE
         val arg = CVDetailsFragmentArgs.fromBundle(requireArguments())
-        Toast.makeText(context, "ID : ${arg.cvSafeArg}", Toast.LENGTH_SHORT).show()
+        viewModel.setCVID(arg.cvSafeArg)
+
+        viewModel.cvID.observe(viewLifecycleOwner, Observer {
+            viewModel.startFetchingSingleCV()
+        })
 
         return binding.root
     }
