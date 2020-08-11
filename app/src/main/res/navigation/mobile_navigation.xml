@@ -4,16 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/CVFragment">
-
-    <fragment
-        android:id="@+id/CVFragment"
-        android:name="com.irving.cvpersonalletter.ui.cv.fragments.CVFragment"
-        android:label="CVFragment" >
-        <action
-            android:id="@+id/action_CVFragment_to_CVDetailsFragment"
-            app:destination="@id/CVDetailsFragment" />
-    </fragment>
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/CVDetailsFragment"
@@ -22,6 +13,15 @@
         <argument
             android:name="cvSafeArg"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.irving.cvpersonalletter.viewpager.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_CVDetailsFragment2"
+            app:destination="@id/CVDetailsFragment" />
     </fragment>
 
 </navigation>

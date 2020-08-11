@@ -17,6 +17,7 @@ import com.irving.cvpersonalletter.R
 import com.irving.cvpersonalletter.databinding.FragmentCvBinding
 import com.irving.cvpersonalletter.ui.cv.adapters.WorkplaceAdapter
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModel
+import com.irving.cvpersonalletter.viewpager.fragment.MainFragmentDirections
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 private const val SPANCOUNT: Int = 2
@@ -43,7 +44,8 @@ class CVFragment : Fragment() {
 
         viewModel.navigateToDetailedCV.observe(viewLifecycleOwner, Observer { id ->
             id?.let {
-                this.findNavController().navigate(CVFragmentDirections.actionCVFragmentToCVDetailsFragment(id))
+//                this.findNavController().navigate(CVFragmentDirections.actionCVFragmentToCVDetailsFragment(id))
+                this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToCVDetailsFragment2(id))
                 viewModel.onCVClickedNavigated()
             }
         })

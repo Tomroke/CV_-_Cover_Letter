@@ -27,14 +27,14 @@ class MainFragment : Fragment() {
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.i("TEST", "IN VIEWPAGER")
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewPager = view_pager
-        viewPagerAdapter =
-            ViewPagerAdapter(this)
+        viewPagerAdapter = ViewPagerAdapter(this)
         viewPager.adapter = viewPagerAdapter
 
         TabLayoutMediator(tab_layout, viewPager) { tab, position ->
