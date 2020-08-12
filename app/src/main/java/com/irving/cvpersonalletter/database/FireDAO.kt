@@ -10,7 +10,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
 
 @ExperimentalCoroutinesApi
-class CVFireDAO: LiveData<CVData>(){
+class FireDAO: LiveData<CVData>(){
     private val TAG: String = "FireDB"
     private val dbCV = FirebaseFirestore.getInstance().collection("cvTest")
     private val dbPI = FirebaseFirestore.getInstance().collection("personalInfo")

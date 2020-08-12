@@ -3,7 +3,6 @@ package com.irving.cvpersonalletter.ui.coverletter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.irving.cvpersonalletter.database.Repository
-import com.irving.cvpersonalletter.ui.contactme.ContactMeViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi

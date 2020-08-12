@@ -38,14 +38,9 @@ class CVFragment : Fragment() {
                 id -> viewModel.onCVClicked(id)
         })
 
-        viewModel.personalInfo.observe(viewLifecycleOwner, Observer {
-            Log.i("Test", "$it")
-        })
-
         viewModel.navigateToDetailedCV.observe(viewLifecycleOwner, Observer { id ->
             id?.let {
-//                this.findNavController().navigate(CVFragmentDirections.actionCVFragmentToCVDetailsFragment(id))
-                this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToCVDetailsFragment2(id))
+                this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToCVDetailsFragment(id))
                 viewModel.onCVClickedNavigated()
             }
         })

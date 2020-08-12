@@ -1,8 +1,8 @@
 package com.irving.cvpersonalletter
 
 import com.irving.cvpersonalletter.database.Repository
-import com.irving.cvpersonalletter.database.CVFireDAO
-import com.irving.cvpersonalletter.ui.contactme.ContactMeViewModelFactory
+import com.irving.cvpersonalletter.database.FireDAO
+import com.irving.cvpersonalletter.ui.contactme.viewmodel.ContactMeViewModelFactory
 import com.irving.cvpersonalletter.ui.coverletter.CoverLetterViewModelFactory
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModelFactory
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModelFactory
@@ -13,7 +13,7 @@ object InjectorUtils {
 
     private fun getRepository (): Repository{
         return Repository.getInstance(
-            CVFireDAO()
+            FireDAO()
         )
     }
 
@@ -26,7 +26,9 @@ object InjectorUtils {
     }
 
     fun provideContactMeViewModel(): ContactMeViewModelFactory {
-        return ContactMeViewModelFactory(getRepository())
+        return ContactMeViewModelFactory(
+            getRepository()
+        )
     }
 
     fun providCoverLetterViewModel(): CoverLetterViewModelFactory {

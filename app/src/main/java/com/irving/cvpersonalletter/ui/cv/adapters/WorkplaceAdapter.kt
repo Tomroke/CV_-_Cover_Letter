@@ -23,7 +23,6 @@ class WorkplaceAdapter(private val clickListener: CVListener): ListAdapter<CVDat
     class CVHolder private constructor(private val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(cvClickListener: CVListener, item: CVData) {
-            Log.i("TEST ADAP", "${item}")
             binding.cvData = item
             binding.clickListener = cvClickListener
             binding.executePendingBindings()

@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.irving.cvpersonalletter.ui.contactme.ContactMeViewModel" />
+            type="com.irving.cvpersonalletter.ui.contactme.viewmodel.ContactMeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.contactme.ContactMeFragment"
+        tools:context=".ui.contactme.fragment.ContactMeFragment"
         android:layout_margin="6dp"
         android:padding="6dp"
         >
@@ -26,6 +26,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/contact_recycler_item"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

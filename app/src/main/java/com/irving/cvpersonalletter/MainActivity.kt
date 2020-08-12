@@ -3,6 +3,7 @@ package com.irving.cvpersonalletter
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -25,8 +26,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val db = FirebaseFirestore.getInstance()
-//        val settings = firestoreSettings { isPersistenceEnabled = true }
-//        db.firestoreSettings = settings
+
+        val db = FirebaseFirestore.getInstance()
+        if (!db.firestoreSettings.isPersistenceEnabled){
+            val settings = firestoreSettings { isPersistenceEnabled = true }
+            db.firestoreSettings = settings
+        }
     }
 }

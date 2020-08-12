@@ -3,7 +3,7 @@ package com.irving.cvpersonalletter.database
 import kotlinx.coroutines.*
 
 @ExperimentalCoroutinesApi
-class Repository private constructor( private val fireDAO: CVFireDAO ){
+class Repository private constructor( private val fireDAO: FireDAO ){
 
     suspend fun getAllCVFromFire(): MutableList<CVData> {
         return fireDAO.getAllCVFromFire()
@@ -19,7 +19,7 @@ class Repository private constructor( private val fireDAO: CVFireDAO ){
 
     companion object{
         @Volatile private var instance: Repository? = null
-        fun getInstance(fireDAO: CVFireDAO) =
+        fun getInstance(fireDAO: FireDAO) =
             instance ?: synchronized(this) {
                 instance ?: Repository(fireDAO).also { instance = it }
             }
