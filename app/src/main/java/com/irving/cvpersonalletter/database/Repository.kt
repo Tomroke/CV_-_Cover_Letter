@@ -17,6 +17,10 @@ class Repository private constructor( private val fireDAO: FireDAO ){
         return fireDAO.getSingleCV(cvId)
     }
 
+    suspend fun getContactingMethods(): MutableList<ContactMeData>{
+        return fireDAO.getContactingMethods()
+    }
+
     companion object{
         @Volatile private var instance: Repository? = null
         fun getInstance(fireDAO: FireDAO) =

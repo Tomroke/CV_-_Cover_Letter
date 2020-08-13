@@ -23,11 +23,11 @@ class ContactAdapter (): ListAdapter<ContactMeData, RecyclerView.ViewHolder>( Co
         (holder as ContactHolder).bind(item)
     }
 
-    private class ContactHolder(private val binding: ContactRecyclerItemBinding): RecyclerView.ViewHolder(binding.root){
+    class ContactHolder(private val binding: ContactRecyclerItemBinding): RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: ContactMeData) {
-            Log.i("TEST ADAP", "${item}")
             binding.contactMeData = item
+
             binding.executePendingBindings()
         }
 
@@ -46,7 +46,7 @@ class ContactAdapter (): ListAdapter<ContactMeData, RecyclerView.ViewHolder>( Co
         }
 
         override fun areContentsTheSame(oldItem: ContactMeData, newItem: ContactMeData): Boolean {
-            return oldItem.equals(newItem)
+            return oldItem == newItem
         }
     }
 

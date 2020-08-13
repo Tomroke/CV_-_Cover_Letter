@@ -1,7 +1,7 @@
 package com.irving.cvpersonalletter.database
 
-class ContactMeData (
-    val contactMethod: String = "",
-    val contactIcon: String = "",
-    val contactData: String = ""
+data class ContactMeData (
+    var contactingName: String = "",
+    var contactingIcon: Int = 0,
+    var contactingLink: String = ""
 )

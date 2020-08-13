@@ -4,7 +4,6 @@
     <string name="title_cover_letter">Cover Letter</string>
     <string name="title_contact">Contact</string>
     <string name="MainFragment">Main Fragment</string>
-
-    <string name="mock_cv_info">The following courses were included in the course; Web application development, Programming towards mobile platform 1, 2, 3, Object Oriented Programming, Mobile Application Development, Mobile Interface (UI / UX). </string>
+    <string name="my_contacting_information">My Contacting Information</string>
 
 </resources>

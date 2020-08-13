@@ -1,6 +1,7 @@
 package com.irving.cvpersonalletter.ui.contactme.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class ContactMeFragment : Fragment() {
     private val viewModel: ContactMeViewModel by viewModels { InjectorUtils.provideContactMeViewModel() }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
-        val layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         val binding: FragmentContactMeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_contact_me, container, false)
 
@@ -42,6 +43,8 @@ class ContactMeFragment : Fragment() {
                 contactAdapter.submitList(it)
             }
         })
+
+
 
         return binding.root
     }
