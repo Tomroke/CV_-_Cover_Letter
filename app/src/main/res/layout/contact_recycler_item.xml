@@ -10,32 +10,54 @@
             type="com.irving.cvpersonalletter.database.ContactMeData" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_margin">
+        android:layout_height="60dp"
+        android:layout_margin="@dimen/small_margin"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="8dp"
+        >
 
-        <ImageView
-            android:id="@+id/contact_icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:contactingIcon="@{contactMeData}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <TextView
-            android:id="@+id/contact_text"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/HeaderBeta"
-            android:text="@{contactMeData.contactingName}"
-            android:layout_margin="@dimen/large_margin"
-            app:layout_constraintStart_toEndOf="@+id/contact_icon"
-            app:layout_constraintTop_toTopOf="@+id/contact_icon"
-            app:layout_constraintBottom_toBottomOf="@+id/contact_icon"
-            tools:text="Contact Option"
-            />
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginTop="@dimen/large_margin"
+            android:layout_marginBottom="@dimen/large_margin"
+            >
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/contact_icon"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:paddingStart="@dimen/medium_padding"
+                    android:paddingLeft="@dimen/medium_padding"
+                    android:paddingEnd="0dp"
+                    android:paddingRight="0dp"
+                    app:setContactingIcon="@{contactMeData}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:src="@drawable/ic_email"
+                    />
+
+                <TextView
+                    android:id="@+id/contact_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{contactMeData.contactingName}"
+                    android:layout_margin="@dimen/large_margin"
+                    style="@style/HeaderBeta"
+                    app:layout_constraintStart_toEndOf="@+id/contact_icon"
+                    app:layout_constraintTop_toTopOf="@+id/contact_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/contact_icon"
+                    tools:text="Contact Option"
+                    />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </layout>
