@@ -28,12 +28,16 @@ class CVDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val arg = CVDetailsFragmentArgs.fromBundle(requireArguments())
-        viewModel.setCVID(arg.cvSafeArg)
-
         viewModel.cvID.observe(viewLifecycleOwner, Observer {
             viewModel.startFetchingSingleCV()
         })
+
+        viewModel.work.observe(viewLifecycleOwner, Observer {
+            viewModel.startFetchingSingleImage(it.image)
+        })
+
+        val arg = CVDetailsFragmentArgs.fromBundle(requireArguments())
+        viewModel.setCVID(arg.cvSafeArg)
 
         return binding.root
     }

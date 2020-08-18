@@ -6,16 +6,24 @@
 
 package com.irving.cvpersonalletter
 
+import android.net.Uri
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.irving.cvpersonalletter.database.ContactMeData
 
+
 @BindingAdapter("setContactingIcon")
-fun ImageView.setContactingIcon (item: ContactMeData?){
+fun ImageView.setContactingIcon(item: ContactMeData?){
     item?.let {
         setImageResource(
-            when (item.contactingIcon){
+            when (item.contactingIcon) {
                 1 -> R.drawable.ic_linkedin
                 2 -> R.drawable.ic_email
                 3 -> R.drawable.ic_phone
@@ -27,13 +35,24 @@ fun ImageView.setContactingIcon (item: ContactMeData?){
     }
 }
 
-@BindingAdapter ("setCvImages")
-fun setCvImages (view: ImageView, url: String?){
-    if (!url.isNullOrEmpty()){
-        Glide.with(view.context)
-            .load(url)
-            .placeholder(R.drawable.ic_phone)
-            .circleCrop()
-            .into(view)
-    }
+//TODO FIX PLACEHOLDER, ERROR
+@BindingAdapter("setImagesWithGlide")
+fun setImagesWithGlide(view: ImageView, uri: Uri?){
+    val circularProgressDrawable = CircularProgressDrawable(view.context)
+    circularProgressDrawable.strokeWidth = 5f
+    circularProgressDrawable.centerRadius = 30f
+    circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
+    circularProgressDrawable.start()
+
+    var requestOptions = RequestOptions()
+    requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(32))
+    requestOptions = requestOptions.placeholder(circularProgressDrawable)
+//    requestOptions = requestOptions.error(R.drawable.ic_phone)
+    requestOptions = requestOptions.skipMemoryCache(true)
+
+    Glide.with(view.context)
+        .load(uri)
+        .apply(requestOptions)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(view)
 }

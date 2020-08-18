@@ -1,14 +1,14 @@
 package com.irving.cvpersonalletter.database
 
-import android.content.Context
-import android.util.Log
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.firestore.ktx.toObjects
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
+import java.net.URI
+
 
 @ExperimentalCoroutinesApi
 class FireDAO: LiveData<CVData>(){
@@ -16,6 +16,15 @@ class FireDAO: LiveData<CVData>(){
     private val dbCV = FirebaseFirestore.getInstance().collection("cvTest")
     private val dbPI = FirebaseFirestore.getInstance().collection("personalInfo")
     private val dbMethods = FirebaseFirestore.getInstance().collection("contactingMethods")
+    private var storage = FirebaseStorage.getInstance()
+
+    suspend fun getSingleImage(url: String): Uri {
+        val storageRef = storage.reference.child(url)
+        return storageRef.downloadUrl.await()
+    }
+    suspend fun getAllImages(uri: URI){
+
+    }
 
     suspend fun getAllCVFromFire(): MutableList<CVData>{
         val cvDataList: MutableList<CVData> = mutableListOf()

@@ -1,5 +1,7 @@
 package com.irving.cvpersonalletter.database
 
+import android.net.Uri
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 
 @ExperimentalCoroutinesApi
@@ -19,6 +21,10 @@ class Repository private constructor( private val fireDAO: FireDAO ){
 
     suspend fun getContactingMethods(): MutableList<ContactMeData>{
         return fireDAO.getContactingMethods()
+    }
+
+    suspend fun getSingleImage(url: String): Uri {
+        return fireDAO.getSingleImage(url)
     }
 
     companion object{

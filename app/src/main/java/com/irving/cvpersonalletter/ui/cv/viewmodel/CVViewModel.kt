@@ -1,5 +1,6 @@
 package com.irving.cvpersonalletter.ui.cv.viewmodel
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -35,6 +36,7 @@ class CVViewModel(val database: Repository) : ViewModel() {
         startFetchingPersonalInfo()
         startFetchingAllCV()
     }
+
 
     private fun startFetchingPersonalInfo(){
         uiScope.launch {
