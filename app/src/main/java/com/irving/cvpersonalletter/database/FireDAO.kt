@@ -1,6 +1,7 @@
 package com.irving.cvpersonalletter.database
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -19,11 +20,11 @@ class FireDAO: LiveData<CVData>(){
     private var storage = FirebaseStorage.getInstance()
 
     suspend fun getSingleImage(url: String): Uri {
-        val storageRef = storage.reference.child(url)
-        return storageRef.downloadUrl.await()
-    }
-    suspend fun getAllImages(uri: URI){
-
+        val storageRef = storage.reference.child(url).downloadUrl
+            .addOnFailureListener { error ->
+            Log.e(TAG, "$error")
+        }
+        return storageRef.await()
     }
 
     suspend fun getAllCVFromFire(): MutableList<CVData>{

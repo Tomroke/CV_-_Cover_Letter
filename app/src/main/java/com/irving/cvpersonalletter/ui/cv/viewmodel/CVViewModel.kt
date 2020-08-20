@@ -1,7 +1,6 @@
 package com.irving.cvpersonalletter.ui.cv.viewmodel
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,9 +19,17 @@ class CVViewModel(val database: Repository) : ViewModel() {
     val personalInfo: LiveData<PersonalInfoData>
         get() = _personalInfo
 
+    private val _personalImage = MutableLiveData<Uri>()
+    val personalImage: LiveData<Uri>
+        get() = _personalImage
+
     private var _allCV = MutableLiveData<MutableList<CVData>>()
     val allCv: LiveData<MutableList<CVData>>
         get() = _allCV
+
+    private var _cvWithUri = MutableLiveData<MutableList<CVData>>()
+    val cvWithUri: LiveData<MutableList<CVData>>
+        get() = _cvWithUri
 
     private val _navigateToDetailedCV = MutableLiveData<Int>()
     val navigateToDetailedCV
@@ -37,6 +44,30 @@ class CVViewModel(val database: Repository) : ViewModel() {
         startFetchingAllCV()
     }
 
+    fun startFetchingPersonalImage(uri: String){
+        uiScope.launch {
+            _personalImage.value = getPersonalImageFromFirebase(uri)
+        }
+    }
+
+    private suspend fun getPersonalImageFromFirebase(uri: String): Uri? {
+        return database.getSingleImage(uri)
+    }
+
+    fun startFetchingCVImages(){
+        uiScope.launch {
+            val newAllCv: MutableList<CVData> = mutableListOf()
+            for (cv in _allCV.value!!){
+                cv.image = getCVImageFromFirebase(cv.image).toString()
+                newAllCv.add(cv)
+            }
+            _cvWithUri.value = newAllCv
+        }
+    }
+
+    private suspend fun getCVImageFromFirebase(uri: String): Uri? {
+        return database.getSingleImage(uri)
+    }
 
     private fun startFetchingPersonalInfo(){
         uiScope.launch {

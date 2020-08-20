@@ -9,15 +9,16 @@ package com.irving.cvpersonalletter
 import android.net.Uri
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.irving.cvpersonalletter.database.ContactMeData
-
 
 @BindingAdapter("setContactingIcon")
 fun ImageView.setContactingIcon(item: ContactMeData?){
@@ -28,11 +29,21 @@ fun ImageView.setContactingIcon(item: ContactMeData?){
                 2 -> R.drawable.ic_email
                 3 -> R.drawable.ic_phone
                 4 -> R.drawable.ic_github
-                else -> R.drawable.ic_linkedin
+                else -> R.drawable.ic_baseline_error_outline_24
 
             }
         )
     }
+}
+
+@BindingAdapter("setPersonalImageWithGlide")
+fun setPersonalImageWithGlide(view: ImageView, uri: Uri?){
+    Glide.with(view.context)
+        .load(uri)
+        .centerInside()
+        .circleCrop()
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(view)
 }
 
 //TODO FIX PLACEHOLDER, ERROR
@@ -45,13 +56,36 @@ fun setImagesWithGlide(view: ImageView, uri: Uri?){
     circularProgressDrawable.start()
 
     var requestOptions = RequestOptions()
-    requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(32))
+    requestOptions = requestOptions.transform(CenterInside(), RoundedCorners(32))
     requestOptions = requestOptions.placeholder(circularProgressDrawable)
-//    requestOptions = requestOptions.error(R.drawable.ic_phone)
+    requestOptions = requestOptions.error(R.drawable.ic_baseline_error_outline_24)
     requestOptions = requestOptions.skipMemoryCache(true)
 
     Glide.with(view.context)
         .load(uri)
+        .apply(requestOptions)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(view)
+}
+
+@BindingAdapter("setImagesWithGlide")
+fun setImagesWithGlide(view: ImageView, uri: String?){
+    val newUri = uri?.toUri()
+
+    val circularProgressDrawable = CircularProgressDrawable(view.context)
+    circularProgressDrawable.strokeWidth = 5f
+    circularProgressDrawable.centerRadius = 30f
+    circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
+    circularProgressDrawable.start()
+
+    var requestOptions = RequestOptions()
+    requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(32))
+    requestOptions = requestOptions.placeholder(circularProgressDrawable)
+    requestOptions = requestOptions.error(R.drawable.ic_baseline_error_outline_24)
+    requestOptions = requestOptions.skipMemoryCache(true)
+
+    Glide.with(view.context)
+        .load(newUri)
         .apply(requestOptions)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(view)
