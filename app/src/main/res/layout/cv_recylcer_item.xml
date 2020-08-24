@@ -34,12 +34,11 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="@dimen/small_margin"
+                app:setImagesWithGlide="@{cvData.imageUri}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
-<!--
-                app:setImagesWithGlide="@{cvData.image}"-->
 
             <TextView
                 android:id="@+id/workplace_title_string"

@@ -22,7 +22,7 @@ class FireDAO: LiveData<CVData>(){
     suspend fun getSingleImage(url: String): Uri {
         val storageRef = storage.reference.child(url).downloadUrl
             .addOnFailureListener { error ->
-            Log.e(TAG, "$error")
+            Log.e(TAG, "$url \n$error")
         }
         return storageRef.await()
     }
@@ -30,9 +30,15 @@ class FireDAO: LiveData<CVData>(){
     suspend fun getAllCVFromFire(): MutableList<CVData>{
         val cvDataList: MutableList<CVData> = mutableListOf()
         val snapshot = dbCV.get().await()
+
         for (snap in snapshot){
             cvDataList.add(snap.toObject())
         }
+
+        for (cv in cvDataList){
+            cv.imageUri = getSingleImage(cv.image)
+        }
+
         return cvDataList
     }
 

@@ -10,71 +10,60 @@
             type="com.irving.cvpersonalletter.ui.coverletter.CoverLetterViewModel" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="1dp"
-        android:padding="50sp"
-        android:layout_margin="80dp"
-        >
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cover_letter_header_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.coverletter.CoverLetterFragment">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/medium_margin"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
-            <TextView
-                android:id="@+id/cover_letter_title"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:textSize="36sp"
-                tools:text="TITLE"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/cover_letter_contact_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:paddingBottom="12dp"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:textSize="20sp"
-                tools:text="CONTACT INFORMATION"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cover_letter_title" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/extra_large_padding"
+                    android:text="@string/title_cover_letter"
+                    style="@style/HeaderAlpha"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
 
-            <TextView
-                android:id="@+id/cover_letter_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:padding="6dp"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:textSize="16sp"
-                android:lineSpacingExtra="3dp"
-                tools:text="Nostrum odit ut fugit voluptas incidunt ducimus. Natus odit numquam consectetur voluptatem. Vitae corrupti velit vel quaerat. Doloremque vel voluptatibus cum autem. Qui qui ea ut deserunt delectus earum omnis."
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cover_letter_contact_info" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
+        <FrameLayout
+            android:id="@+id/cover_letter_frame_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/medium_margin"
+            android:padding="@dimen/large_padding"
+            app:layout_constraintTop_toBottomOf="@+id/cover_letter_header_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/cover_letter_para_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:item="fragment_cover_letter_fragment"
+                    />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

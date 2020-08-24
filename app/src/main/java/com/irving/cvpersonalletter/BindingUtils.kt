@@ -18,6 +18,9 @@ import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.irving.cvpersonalletter.database.ContactMeData
 
 @BindingAdapter("setContactingIcon")
@@ -63,29 +66,6 @@ fun setImagesWithGlide(view: ImageView, uri: Uri?){
 
     Glide.with(view.context)
         .load(uri)
-        .apply(requestOptions)
-        .transition(DrawableTransitionOptions.withCrossFade())
-        .into(view)
-}
-
-@BindingAdapter("setImagesWithGlide")
-fun setImagesWithGlide(view: ImageView, uri: String?){
-    val newUri = uri?.toUri()
-
-    val circularProgressDrawable = CircularProgressDrawable(view.context)
-    circularProgressDrawable.strokeWidth = 5f
-    circularProgressDrawable.centerRadius = 30f
-    circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
-    circularProgressDrawable.start()
-
-    var requestOptions = RequestOptions()
-    requestOptions = requestOptions.transform(CenterCrop(), RoundedCorners(32))
-    requestOptions = requestOptions.placeholder(circularProgressDrawable)
-    requestOptions = requestOptions.error(R.drawable.ic_baseline_error_outline_24)
-    requestOptions = requestOptions.skipMemoryCache(true)
-
-    Glide.with(view.context)
-        .load(newUri)
         .apply(requestOptions)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(view)

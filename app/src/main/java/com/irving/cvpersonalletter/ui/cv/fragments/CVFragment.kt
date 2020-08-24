@@ -47,10 +47,6 @@ class CVFragment : Fragment() {
         })
 
         viewModel.allCv.observe(viewLifecycleOwner, Observer {
-            viewModel.startFetchingCVImages()
-        })
-
-        viewModel.cvWithUri.observe(viewLifecycleOwner, Observer {
             it.let {
                 workplaceAdapter.submitList(it)
             }
