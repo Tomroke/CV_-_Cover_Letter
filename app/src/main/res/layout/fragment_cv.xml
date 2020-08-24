@@ -21,7 +21,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="@dimen/large_margin"
-                    app:setPersonalImageWithGlide="@{viewmodel.personalImage}"
+                    app:setPersonalImageWithGlide="@{viewmodel.personalInfo.imageUri}"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 

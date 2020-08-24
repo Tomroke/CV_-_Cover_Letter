@@ -8,7 +8,6 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
-import java.net.URI
 
 
 @ExperimentalCoroutinesApi
@@ -43,8 +42,11 @@ class FireDAO: LiveData<CVData>(){
     }
 
     suspend fun getPersonalInfo(): PersonalInfoData {
+        val personalInfoData: PersonalInfoData
         val snapshot = dbPI.get().await()
-        return snapshot.first().toObject()
+        personalInfoData = snapshot.documents.first().toObject()!!
+            personalInfoData.imageUri = getSingleImage(personalInfoData.image)
+        return personalInfoData
     }
 
     suspend fun getSingleCV(cvId: Int): CVData {

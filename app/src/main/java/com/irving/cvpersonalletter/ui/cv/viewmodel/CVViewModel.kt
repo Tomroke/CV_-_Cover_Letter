@@ -20,10 +20,6 @@ class CVViewModel(val database: Repository) : ViewModel() {
     val personalInfo: LiveData<PersonalInfoData>
         get() = _personalInfo
 
-    private val _personalImage = MutableLiveData<Uri>()
-    val personalImage: LiveData<Uri>
-        get() = _personalImage
-
     private var _allCV = MutableLiveData<MutableList<CVData>>()
     val allCv: LiveData<MutableList<CVData>>
         get() = _allCV
@@ -39,16 +35,6 @@ class CVViewModel(val database: Repository) : ViewModel() {
     init {
         startFetchingPersonalInfo()
         startFetchingAllCV()
-    }
-
-    fun startFetchingPersonalImage(uri: String){
-        uiScope.launch {
-            _personalImage.value = getPersonalImageFromFirebase(uri)
-        }
-    }
-
-    private suspend fun getPersonalImageFromFirebase(uri: String): Uri? {
-        return database.getSingleImage(uri)
     }
 
     private fun startFetchingPersonalInfo(){
