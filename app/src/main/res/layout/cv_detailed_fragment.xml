@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_margin="@dimen/small_margin"
-            app:setImagesWithGlide="@{viewModel.image}"
+            app:setImagesWithGlide="@{viewModel.singleCV.imageUri}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="TITLE"
-            android:text="@{viewModel.work.title}"
+            android:text="@{viewModel.singleCV.title}"
             style="@style/HeaderAlpha"
             android:layout_margin="@dimen/small_margin"
             android:padding="@dimen/large_padding"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="EMPLOYER"
-            android:text="@{viewModel.work.employer}"
+            android:text="@{viewModel.singleCV.employer}"
             style="@style/HeaderBeta"
             android:layout_margin="@dimen/small_margin"
             android:padding="@dimen/large_padding"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="PARA"
-            android:text="@{viewModel.work.paraOne}"
+            android:text="@{viewModel.singleCV.paraOne}"
             style="@style/ParaAlpha"
             android:layout_margin="@dimen/small_margin"
             android:padding="@dimen/large_padding"
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="PARA"
-            android:text="@{viewModel.work.paraTwo}"
+            android:text="@{viewModel.singleCV.paraTwo}"
             style="@style/ParaAlpha"
             android:layout_margin="@dimen/small_margin"
             android:padding="@dimen/large_padding"
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="PARA"
-            android:text="@{viewModel.work.paraThree}"
+            android:text="@{viewModel.singleCV.paraThree}"
             style="@style/ParaAlpha"
             android:layout_margin="@dimen/small_margin"
             android:padding="@dimen/large_padding"
@@ -95,7 +95,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

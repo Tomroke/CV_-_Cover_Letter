@@ -7,62 +7,104 @@
     <data>
         <variable
             name="viewModel"
-            type="com.irving.cvpersonalletter.ui.coverletter.CoverLetterViewModel" />
+            type="com.irving.cvpersonalletter.ui.coverletter.CoverLetterViewModel"
+            />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.coverletter.CoverLetterFragment"
+        >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cover_letter_header_card"
+            android:id="@+id/cover_letter_header_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/medium_margin"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             app:cardBackgroundColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/extra_large_padding"
-                    android:text="@string/title_cover_letter"
-                    style="@style/HeaderAlpha"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/medium_margin"
+                android:text="@string/title_cover_letter"
+                style="@style/HeaderAlpha"
+                />
 
         </androidx.cardview.widget.CardView>
 
-        <FrameLayout
-            android:id="@+id/cover_letter_frame_one"
+        <TextView
+            android:id="@+id/para_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/medium_margin"
-            android:padding="@dimen/large_padding"
-            app:layout_constraintTop_toBottomOf="@+id/cover_letter_header_card"
+            android:layout_margin="@dimen/large_margin"
+            android:padding="@dimen/medium_padding"
+            android:text="TESSSSSSSSSSSSSSSSSSSSSSSSST"
+            style="@style/ParaAlpha"
+            app:layout_constraintTop_toBottomOf="@id/cover_letter_header_container"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            >
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/cover_letter_para_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:item="fragment_cover_letter_fragment"
-                    />
+            />
 
-        </FrameLayout>
+        <TextView
+            android:id="@+id/para_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/large_margin"
+            android:padding="@dimen/medium_padding"
+            android:text="TESSSSSSSSSSSSSSSSSSSSSSSSST"
+            style="@style/ParaAlpha"
+            app:layout_constraintTop_toBottomOf="@id/para_one"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/para_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/large_margin"
+            android:padding="@dimen/medium_padding"
+            android:text="TESSSSSSSSSSSSSSSSSSSSSSSSST"
+            style="@style/ParaAlpha"
+            app:layout_constraintTop_toBottomOf="@id/para_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/para_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/large_margin"
+            android:padding="@dimen/medium_padding"
+            android:text="TESSSSSSSSSSSSSSSSSSSSSSSSST"
+            style="@style/ParaAlpha"
+            app:layout_constraintTop_toBottomOf="@id/para_three"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/para_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/large_margin"
+            android:padding="@dimen/medium_padding"
+            android:text="TESSSSSSSSSSSSSSSSSSSSSSSSST"
+            style="@style/ParaAlpha"
+            app:layout_constraintTop_toBottomOf="@id/para_four"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

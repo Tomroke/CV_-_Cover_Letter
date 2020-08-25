@@ -45,13 +45,16 @@ class FireDAO: LiveData<CVData>(){
         val personalInfoData: PersonalInfoData
         val snapshot = dbPI.get().await()
         personalInfoData = snapshot.documents.first().toObject()!!
-            personalInfoData.imageUri = getSingleImage(personalInfoData.image)
+        personalInfoData.imageUri = getSingleImage(personalInfoData.image)
         return personalInfoData
     }
 
     suspend fun getSingleCV(cvId: Int): CVData {
+        val singleCV: CVData
         val snapshot = dbCV.whereEqualTo("cvId", cvId).get().await()
-        return snapshot.first().toObject()
+        singleCV = snapshot.documents.first().toObject()!!
+        singleCV.imageUri = getSingleImage(singleCV.image)
+        return singleCV
 }
 
     suspend fun getContactingMethods(): MutableList<ContactMeData>{

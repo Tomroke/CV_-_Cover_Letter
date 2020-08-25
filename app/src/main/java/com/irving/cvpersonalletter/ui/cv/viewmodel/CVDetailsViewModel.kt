@@ -16,30 +16,17 @@ class CVDetailsViewModel (val database: Repository) : ViewModel() {
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private var _singleCV = MutableLiveData<CVData>()
-    val work: LiveData<CVData>
+    val singleCV: LiveData<CVData>
         get() = _singleCV
 
     private var _cvID = MutableLiveData<Int>()
     val cvID: LiveData<Int>
         get() = _cvID
 
-    private var _image = MutableLiveData<Uri>()
-    val image: LiveData<Uri>
-        get() = _image
-
     fun setCVID(id: Int){
         if (id != _cvID.value){
             _cvID.value = id
         }
-    }
-    fun startFetchingSingleImage(uri: String) {
-        uiScope.launch {
-            _image.value = getSingleImageFromStorage(uri)
-        }
-    }
-
-    private suspend fun getSingleImageFromStorage(uri: String): Uri {
-        return database.getSingleImage(uri)
     }
 
     fun startFetchingSingleCV() {

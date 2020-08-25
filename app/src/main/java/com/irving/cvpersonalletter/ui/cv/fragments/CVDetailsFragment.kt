@@ -32,10 +32,6 @@ class CVDetailsFragment : Fragment() {
             viewModel.startFetchingSingleCV()
         })
 
-        viewModel.work.observe(viewLifecycleOwner, Observer {
-            viewModel.startFetchingSingleImage(it.image)
-        })
-
         val arg = CVDetailsFragmentArgs.fromBundle(requireArguments())
         viewModel.setCVID(arg.cvSafeArg)
 

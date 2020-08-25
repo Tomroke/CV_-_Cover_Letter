@@ -23,10 +23,6 @@ class Repository private constructor( private val fireDAO: FireDAO ){
         return fireDAO.getContactingMethods()
     }
 
-    suspend fun getSingleImage(url: String): Uri {
-        return fireDAO.getSingleImage(url)
-    }
-
     companion object{
         @Volatile private var instance: Repository? = null
         fun getInstance(fireDAO: FireDAO) =
