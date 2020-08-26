@@ -7,7 +7,7 @@
     <data>
         <variable
             name="cvData"
-            type="com.irving.cvpersonalletter.database.CVData" />
+            type="com.irving.cvpersonalletter.database.dataobjects.CVData" />
         <variable
             name="clickListener"
             type="com.irving.cvpersonalletter.ui.cv.adapters.WorkplaceAdapter.CVListener" />

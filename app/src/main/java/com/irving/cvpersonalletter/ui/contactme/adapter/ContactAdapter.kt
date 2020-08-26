@@ -1,16 +1,12 @@
 package com.irving.cvpersonalletter.ui.contactme.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.irving.cvpersonalletter.database.CVData
-import com.irving.cvpersonalletter.database.ContactMeData
+import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
 import com.irving.cvpersonalletter.databinding.ContactRecyclerItemBinding
-import com.irving.cvpersonalletter.databinding.CvRecylcerItemBinding
-import com.irving.cvpersonalletter.ui.cv.adapters.WorkplaceAdapter
 
 class ContactAdapter (): ListAdapter<ContactMeData, RecyclerView.ViewHolder>( ContactDiffCallback() ){
 

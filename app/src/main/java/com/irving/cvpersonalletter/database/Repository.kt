@@ -1,7 +1,8 @@
 package com.irving.cvpersonalletter.database
 
-import android.net.Uri
-import androidx.lifecycle.MutableLiveData
+import com.irving.cvpersonalletter.database.dataobjects.CVData
+import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
+import com.irving.cvpersonalletter.database.dataobjects.CoverLetterData
 import kotlinx.coroutines.*
 
 @ExperimentalCoroutinesApi
@@ -15,12 +16,16 @@ class Repository private constructor( private val fireDAO: FireDAO ){
         return fireDAO.getPersonalInfo()
     }
 
-    suspend fun getSingleCv(cvId: Int): CVData{
+    suspend fun getSingleCv(cvId: Int): CVData {
         return fireDAO.getSingleCV(cvId)
     }
 
     suspend fun getContactingMethods(): MutableList<ContactMeData>{
         return fireDAO.getContactingMethods()
+    }
+
+    suspend fun getCoverLetter(): CoverLetterData{
+        return fireDAO.getCoverLetter()
     }
 
     companion object{

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.irving.cvpersonalletter.database.CVData"/>
+        <import type="com.irving.cvpersonalletter.database.dataobjects.CVData"/>
         <variable
             name="viewModel"
             type="com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModel" />

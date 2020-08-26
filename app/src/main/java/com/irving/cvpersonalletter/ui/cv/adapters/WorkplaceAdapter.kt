@@ -1,12 +1,11 @@
 package com.irving.cvpersonalletter.ui.cv.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.irving.cvpersonalletter.database.CVData
+import com.irving.cvpersonalletter.database.dataobjects.CVData
 import com.irving.cvpersonalletter.databinding.CvRecylcerItemBinding
 
 class WorkplaceAdapter(private val clickListener: CVListener): ListAdapter<CVData, RecyclerView.ViewHolder>( WorkDiffCallback() ){

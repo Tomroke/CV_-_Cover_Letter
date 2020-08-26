@@ -6,6 +6,9 @@ import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
+import com.irving.cvpersonalletter.database.dataobjects.CVData
+import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
+import com.irving.cvpersonalletter.database.dataobjects.CoverLetterData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
 
@@ -16,6 +19,7 @@ class FireDAO: LiveData<CVData>(){
     private val dbCV = FirebaseFirestore.getInstance().collection("cvTest")
     private val dbPI = FirebaseFirestore.getInstance().collection("personalInfo")
     private val dbMethods = FirebaseFirestore.getInstance().collection("contactingMethods")
+    private val dbCL = FirebaseFirestore.getInstance().collection("coverLetter")
     private var storage = FirebaseStorage.getInstance()
 
     suspend fun getSingleImage(url: String): Uri {
@@ -64,6 +68,13 @@ class FireDAO: LiveData<CVData>(){
             contactingMethods.add(snap.toObject())
         }
         return contactingMethods
+    }
+
+    suspend fun getCoverLetter(): CoverLetterData{
+        val coverLetterData: CoverLetterData
+        val snapshot = dbCL.get().await()
+        coverLetterData = snapshot.first().toObject()
+        return coverLetterData
     }
 
 }

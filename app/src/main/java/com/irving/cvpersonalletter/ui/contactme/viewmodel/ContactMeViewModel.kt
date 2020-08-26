@@ -3,8 +3,7 @@ package com.irving.cvpersonalletter.ui.contactme.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.irving.cvpersonalletter.database.ContactMeData
-import com.irving.cvpersonalletter.database.PersonalInfoData
+import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
 import com.irving.cvpersonalletter.database.Repository
 import kotlinx.coroutines.*
 

@@ -1,11 +1,9 @@
 package com.irving.cvpersonalletter.ui.cv.viewmodel
 
-import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.irving.cvpersonalletter.database.CVData
+import com.irving.cvpersonalletter.database.dataobjects.CVData
 import com.irving.cvpersonalletter.database.PersonalInfoData
 import com.irving.cvpersonalletter.database.Repository
 import kotlinx.coroutines.*

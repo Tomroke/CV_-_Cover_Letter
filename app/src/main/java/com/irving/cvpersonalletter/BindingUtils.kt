@@ -8,20 +8,14 @@ package com.irving.cvpersonalletter
 
 import android.net.Uri
 import android.widget.ImageView
-import android.widget.ProgressBar
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.irving.cvpersonalletter.database.ContactMeData
+import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
 
 @BindingAdapter("setContactingIcon")
 fun ImageView.setContactingIcon(item: ContactMeData?){
