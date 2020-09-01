@@ -15,8 +15,8 @@ class WorkplaceAdapter(private val clickListener: CVListener): ListAdapter<CVDat
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val cvItem = getItem(position)
-        (holder as CVHolder).bind(clickListener, cvItem)
+        val item = getItem(position)
+        (holder as CVHolder).bind(clickListener, item)
     }
 
     class CVHolder private constructor(private val binding: CvRecylcerItemBinding): RecyclerView.ViewHolder(binding.root) {

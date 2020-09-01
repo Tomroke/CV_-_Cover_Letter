@@ -76,5 +76,4 @@ class FireDAO: LiveData<CVData>(){
         coverLetterData = snapshot.first().toObject()
         return coverLetterData
     }
-
 }

@@ -105,4 +105,7 @@ dependencies {
     //GLIDE
      implementation 'com.github.bumptech.glide:glide:4.11.0'
      kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //EMAIL INTENT BUILDER
+    implementation 'de.cketti.mailto:email-intent-builder:2.0.0'
 }

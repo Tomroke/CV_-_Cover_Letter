@@ -3,5 +3,6 @@ package com.irving.cvpersonalletter.database.dataobjects
 data class ContactMeData (
     var contactingName: String = "",
     var contactingIcon: Int = 0,
-    var contactingLink: String = ""
+    var contactingLink: String = "",
+    var id: Int = 0
 )

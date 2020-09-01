@@ -1,11 +1,20 @@
 package com.irving.cvpersonalletter.ui.contactme.viewmodel
 
+import android.Manifest
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
 import com.irving.cvpersonalletter.database.Repository
+import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
+import de.cketti.mailto.EmailIntentBuilder
 import kotlinx.coroutines.*
+
 
 @ExperimentalCoroutinesApi
 class ContactMeViewModel(val database: Repository) : ViewModel() {
@@ -31,4 +40,24 @@ class ContactMeViewModel(val database: Repository) : ViewModel() {
         return database.getContactingMethods()
     }
 
+    fun contactMeWith(method: String, link: String, context: Context){
+        when(method){
+            "LinkedIn" -> {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                startActivity(context, browserIntent, null)
+            }
+            "Email" -> {
+                val emailIntent = EmailIntentBuilder.from(context).to(link).subject("We checked out your App!").build()
+                startActivity(context, emailIntent, null)
+            }
+            "Phone" -> {
+                val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$link"))
+                startActivity(context, phoneIntent, null)
+            }
+            "Github" -> {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                startActivity(context, browserIntent, null)
+            }
+        }
+    }
 }

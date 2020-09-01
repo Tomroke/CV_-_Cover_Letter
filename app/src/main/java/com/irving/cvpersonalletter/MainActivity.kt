@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val db = FirebaseFirestore.getInstance()
         if (!db.firestoreSettings.isPersistenceEnabled){
             val settings = firestoreSettings { isPersistenceEnabled = true }
