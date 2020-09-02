@@ -11,90 +11,99 @@
             type="com.irving.cvpersonalletter.ui.cv.viewmodel.CVDetailsViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.cv.fragments.CVDetailsFragment">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/cv_detailed_image"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_margin="@dimen/small_margin"
-            app:setImagesWithGlide="@{viewModel.singleCV.imageUri}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/cv_detailed_title"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="TITLE"
-            android:text="@{viewModel.singleCV.title}"
-            style="@style/HeaderAlpha"
-            android:layout_margin="@dimen/small_margin"
-            android:padding="@dimen/large_padding"
-            app:layout_constraintTop_toBottomOf="@+id/cv_detailed_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_margin="@dimen/medium_margin"
+            android:paddingBottom="@dimen/large_padding"
+            tools:context=".ui.cv.fragments.CVDetailsFragment">
 
-        <TextView
-            android:id="@+id/cv_detailed_employer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="EMPLOYER"
-            android:text="@{viewModel.singleCV.employer}"
-            style="@style/HeaderBeta"
-            android:layout_margin="@dimen/small_margin"
-            android:padding="@dimen/large_padding"
-            app:layout_constraintTop_toBottomOf="@+id/cv_detailed_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            <ImageView
+                android:id="@+id/cv_detailed_image"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="@dimen/small_margin"
+                app:setImagesWithGlide="@{viewModel.singleCV.imageUri}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
 
-        <TextView
-            android:id="@+id/cv_first_para"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="PARA"
-            android:text="@{viewModel.singleCV.paraOne}"
-            style="@style/ParaAlpha"
-            android:layout_margin="@dimen/small_margin"
-            android:padding="@dimen/large_padding"
-            app:layout_constraintTop_toBottomOf="@+id/cv_detailed_employer"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            <TextView
+                android:id="@+id/cv_detailed_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.singleCV.occupation}"
+                android:layout_margin="@dimen/small_margin"
+                android:padding="@dimen/large_padding"
+                style="@style/HeaderAlpha"
+                tools:text="TITLE"
+                app:layout_constraintTop_toBottomOf="@+id/cv_detailed_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/cv_second_para"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="PARA"
-            android:text="@{viewModel.singleCV.paraTwo}"
-            style="@style/ParaAlpha"
-            android:layout_margin="@dimen/small_margin"
-            android:padding="@dimen/large_padding"
-            app:layout_constraintTop_toBottomOf="@+id/cv_first_para"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            <TextView
+                android:id="@+id/cv_detailed_employer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.singleCV.location}"
+                android:layout_margin="@dimen/small_margin"
+                android:padding="@dimen/large_padding"
+                style="@style/HeaderBeta"
+                tools:text="EMPLOYER"
+                app:layout_constraintTop_toBottomOf="@+id/cv_detailed_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
 
-        <TextView
-            android:id="@+id/cv_third_para"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="PARA"
-            android:text="@{viewModel.singleCV.paraThree}"
-            style="@style/ParaAlpha"
-            android:layout_margin="@dimen/small_margin"
-            android:padding="@dimen/large_padding"
-            app:layout_constraintTop_toBottomOf="@+id/cv_second_para"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            <TextView
+                android:id="@+id/cv_first_para"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.singleCV.paraOne}"
+                android:layout_margin="@dimen/small_margin"
+                android:padding="@dimen/large_padding"
+                style="@style/ParaAlpha"
+                tools:text="PARA"
+                app:layout_constraintTop_toBottomOf="@+id/cv_detailed_employer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/cv_second_para"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.singleCV.paraTwo}"
+                android:layout_margin="@dimen/small_margin"
+                android:padding="@dimen/large_padding"
+                style="@style/ParaAlpha"
+                tools:text="PARA"
+                app:layout_constraintTop_toBottomOf="@+id/cv_first_para"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/cv_third_para"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.singleCV.paraThree}"
+                android:layout_margin="@dimen/small_margin"
+                android:padding="@dimen/large_padding"
+                style="@style/ParaAlpha"
+                tools:text="PARA"
+                app:layout_constraintTop_toBottomOf="@+id/cv_second_para"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 </layout>

@@ -15,7 +15,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class CoverLetterFragment : Fragment() {
 
-    private val viewModel: CoverLetterViewModel by viewModels { InjectorUtils.providCoverLetterViewModel() }
+    private val viewModel: CoverLetterViewModel by viewModels { InjectorUtils.provideCoverLetterViewModel() }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
 

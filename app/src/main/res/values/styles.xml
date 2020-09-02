@@ -9,7 +9,7 @@
 
     <style name="HeaderAlpha" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">26sp</item>
         <item name="android:textColor">@color/txt_black</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
         <item name="android:gravity">center_horizontal</item>
@@ -17,7 +17,7 @@
 
     <style name="HeaderBeta" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/txt_black</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
         <item name="android:gravity">center_horizontal</item>
@@ -25,10 +25,10 @@
 
     <style name="HeaderOmega" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/roboto_light</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/txt_black</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
-        <item name="android:gravity">center_horizontal</item>
+        <item name="android:gravity">top</item>
         <item name="android:textStyle">bold</item>
     </style>
 

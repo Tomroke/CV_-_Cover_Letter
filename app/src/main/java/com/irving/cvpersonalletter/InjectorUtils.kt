@@ -31,7 +31,7 @@ object InjectorUtils {
         )
     }
 
-    fun providCoverLetterViewModel(): CoverLetterViewModelFactory {
+    fun provideCoverLetterViewModel(): CoverLetterViewModelFactory {
         return CoverLetterViewModelFactory(getRepository())
     }
 

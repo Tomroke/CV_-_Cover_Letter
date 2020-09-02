@@ -1,4 +1,4 @@
-package com.irving.cvpersonalletter.database
+package com.irving.cvpersonalletter.database.dataobjects
 
 import android.net.Uri
 

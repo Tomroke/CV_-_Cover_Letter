@@ -3,6 +3,7 @@ package com.irving.cvpersonalletter.database
 import com.irving.cvpersonalletter.database.dataobjects.CVData
 import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
 import com.irving.cvpersonalletter.database.dataobjects.CoverLetterData
+import com.irving.cvpersonalletter.database.dataobjects.PersonalInfoData
 import kotlinx.coroutines.*
 
 @ExperimentalCoroutinesApi

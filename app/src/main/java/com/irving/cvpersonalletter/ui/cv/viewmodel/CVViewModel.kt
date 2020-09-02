@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.irving.cvpersonalletter.database.dataobjects.CVData
-import com.irving.cvpersonalletter.database.PersonalInfoData
+import com.irving.cvpersonalletter.database.dataobjects.PersonalInfoData
 import com.irving.cvpersonalletter.database.Repository
 import kotlinx.coroutines.*
 

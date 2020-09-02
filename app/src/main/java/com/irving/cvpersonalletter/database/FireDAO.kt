@@ -9,6 +9,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.irving.cvpersonalletter.database.dataobjects.CVData
 import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
 import com.irving.cvpersonalletter.database.dataobjects.CoverLetterData
+import com.irving.cvpersonalletter.database.dataobjects.PersonalInfoData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
 
@@ -16,18 +17,22 @@ import kotlinx.coroutines.tasks.await
 @ExperimentalCoroutinesApi
 class FireDAO: LiveData<CVData>(){
     private val TAG: String = "FireDB"
-    private val dbCV = FirebaseFirestore.getInstance().collection("cvTest")
+    private val dbCV = FirebaseFirestore.getInstance().collection("cvData")
     private val dbPI = FirebaseFirestore.getInstance().collection("personalInfo")
     private val dbMethods = FirebaseFirestore.getInstance().collection("contactingMethods")
     private val dbCL = FirebaseFirestore.getInstance().collection("coverLetter")
     private var storage = FirebaseStorage.getInstance()
 
-    suspend fun getSingleImage(url: String): Uri {
-        val storageRef = storage.reference.child(url).downloadUrl
-            .addOnFailureListener { error ->
-            Log.e(TAG, "$url \n$error")
+    private suspend fun getSingleImage(url: String): Uri? {
+        return if (url.isNotEmpty()){
+            val storageRef = storage.reference.child(url).downloadUrl
+                .addOnFailureListener { error ->
+                    Log.e(TAG, "$url \n$error")
+                }
+            storageRef.await()
+        } else{
+            null
         }
-        return storageRef.await()
     }
 
     suspend fun getAllCVFromFire(): MutableList<CVData>{
