@@ -15,9 +15,11 @@ import com.irving.cvpersonalletter.InjectorUtils
 import com.irving.cvpersonalletter.R
 import com.irving.cvpersonalletter.databinding.FragmentCvBinding
 import com.irving.cvpersonalletter.ui.cv.adapters.WorkplaceAdapter
+import com.irving.cvpersonalletter.ui.cv.decoration.CVItemDecoration
 import com.irving.cvpersonalletter.ui.cv.viewmodel.CVViewModel
 import com.irving.cvpersonalletter.viewpager.fragment.MainFragmentDirections
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+
 
 private const val SPANCOUNT: Int = 2
 
@@ -26,20 +28,40 @@ class CVFragment : Fragment() {
 
     private val viewModel: CVViewModel by viewModels { InjectorUtils.provideCVViewModelFactory() }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val layoutManager = GridLayoutManager(context,  SPANCOUNT, RecyclerView.VERTICAL, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val layoutManager = GridLayoutManager(context, SPANCOUNT, RecyclerView.VERTICAL, false)
 
-        val binding: FragmentCvBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_cv, container, false)
+        val binding: FragmentCvBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_cv,
+            container,
+            false
+        )
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
 
-        val workplaceAdapter = WorkplaceAdapter(WorkplaceAdapter.CVListener { id -> viewModel.onCVClicked(id) })
+        val workplaceAdapter = WorkplaceAdapter(WorkplaceAdapter.CVListener { id ->
+            viewModel.onCVClicked(
+                id
+            )
+        })
+
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.medium_margin)
+        binding.cvRecyclerview.addItemDecoration(CVItemDecoration(spacingInPixels))
         binding.cvRecyclerview.adapter = workplaceAdapter
         binding.cvRecyclerview.layoutManager = layoutManager
 
         viewModel.navigateToDetailedCV.observe(viewLifecycleOwner, Observer { id ->
             id?.let {
-                this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToCVDetailsFragment(id))
+                this.findNavController().navigate(
+                    MainFragmentDirections.actionMainFragmentToCVDetailsFragment(
+                        id
+                    )
+                )
                 viewModel.onCVClickedNavigated()
             }
         })
