@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.irving.cvpersonalletter.FirebaseImageStatus
 import com.irving.cvpersonalletter.database.Repository
 import com.irving.cvpersonalletter.database.dataobjects.ContactMeData
 import de.cketti.mailto.EmailIntentBuilder
@@ -22,6 +23,10 @@ class ContactMeViewModel(val database: Repository) : ViewModel() {
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    private val _status = MutableLiveData<FirebaseImageStatus>()
+    val status: LiveData<FirebaseImageStatus>
+        get() = _status
+
     private val _contactMe = MutableLiveData<MutableList<ContactMeData>>()
     val contactMe: LiveData<MutableList<ContactMeData>>
         get() = _contactMe
@@ -32,7 +37,16 @@ class ContactMeViewModel(val database: Repository) : ViewModel() {
 
     private fun startFetchingContactingMethods(){
         uiScope.launch {
-            _contactMe.value = getContactingMethodsFromFirebase()
+            try {
+                _status.value = FirebaseImageStatus.LOADING
+                val contactMeData = getContactingMethodsFromFirebase()
+
+                _status.value = FirebaseImageStatus.DONE
+                _contactMe.value = contactMeData
+
+            }catch (error: Exception){
+                _status.value = FirebaseImageStatus.ERROR
+            }
         }
     }
 

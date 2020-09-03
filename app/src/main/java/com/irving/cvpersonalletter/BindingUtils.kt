@@ -7,6 +7,7 @@
 package com.irving.cvpersonalletter
 
 import android.net.Uri
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -43,18 +44,10 @@ fun setPersonalImageWithGlide(view: ImageView, uri: Uri?){
         .into(view)
 }
 
-//TODO FIX PLACEHOLDER, ERROR
 @BindingAdapter("setImagesWithGlide")
 fun setImagesWithGlide(view: ImageView, uri: Uri?){
-    val circularProgressDrawable = CircularProgressDrawable(view.context)
-    circularProgressDrawable.strokeWidth = 5f
-    circularProgressDrawable.centerRadius = 30f
-    circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
-    circularProgressDrawable.start()
-
     var requestOptions = RequestOptions()
     requestOptions = requestOptions.transform(CenterInside(), RoundedCorners(32))
-    requestOptions = requestOptions.placeholder(circularProgressDrawable)
     requestOptions = requestOptions.error(R.drawable.ic_baseline_error_outline_24)
     requestOptions = requestOptions.skipMemoryCache(true)
 
@@ -63,4 +56,21 @@ fun setImagesWithGlide(view: ImageView, uri: Uri?){
         .apply(requestOptions)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(view)
+}
+
+@BindingAdapter("loadingStatus")
+fun bindStatus(statusImageView: ImageView, status: FirebaseImageStatus?) {
+    when (status) {
+        FirebaseImageStatus.LOADING -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.loading_animation)
+        }
+        FirebaseImageStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        FirebaseImageStatus.DONE -> {
+            statusImageView.visibility = View.GONE
+        }
+    }
 }

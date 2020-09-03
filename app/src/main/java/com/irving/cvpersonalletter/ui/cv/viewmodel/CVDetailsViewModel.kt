@@ -3,6 +3,7 @@ package com.irving.cvpersonalletter.ui.cv.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.irving.cvpersonalletter.FirebaseImageStatus
 import com.irving.cvpersonalletter.database.dataobjects.CVData
 import com.irving.cvpersonalletter.database.Repository
 import kotlinx.coroutines.*
@@ -12,6 +13,10 @@ class CVDetailsViewModel (val database: Repository) : ViewModel() {
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    private val _status = MutableLiveData<FirebaseImageStatus>()
+    val status: LiveData<FirebaseImageStatus>
+        get() = _status
 
     private var _singleCV = MutableLiveData<CVData>()
     val singleCV: LiveData<CVData>
@@ -29,13 +34,25 @@ class CVDetailsViewModel (val database: Repository) : ViewModel() {
 
     fun startFetchingSingleCV() {
         uiScope.launch {
-            getSingleCVFromFirebase()
+            try {
+                _status.value = FirebaseImageStatus.LOADING
+                val singleCV = getSingleCVFromFirebase()
+
+                _status.value = FirebaseImageStatus.DONE
+                _singleCV.value = singleCV
+
+            }catch (error: Exception){
+                _status.value = FirebaseImageStatus.ERROR
+            }
+
         }
     }
 
-    private suspend fun getSingleCVFromFirebase() {
-        if (cvID.value != null){
-            _singleCV.value = database.getSingleCv(cvID.value!!)
+    private suspend fun getSingleCVFromFirebase(): CVData {
+        return if (cvID.value != null){
+            database.getSingleCv(cvID.value!!)
+        }else{
+            CVData()
         }
     }
 

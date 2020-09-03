@@ -42,7 +42,7 @@ class CVFragment : Fragment() {
             false
         )
         binding.lifecycleOwner = this
-        binding.viewmodel = viewModel
+        binding.viewModel = viewModel
 
         val workplaceAdapter = WorkplaceAdapter(WorkplaceAdapter.CVListener { id ->
             viewModel.onCVClicked(
