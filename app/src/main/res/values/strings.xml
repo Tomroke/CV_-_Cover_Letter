@@ -5,5 +5,7 @@
     <string name="title_contact">Contact</string>
     <string name="MainFragment">Main Fragment</string>
     <string name="my_contacting_information">My Contacting Information</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="loading_widget">Loading Widget</string>
 
 </resources>
