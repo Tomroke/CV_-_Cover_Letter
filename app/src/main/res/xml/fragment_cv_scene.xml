@@ -105,6 +105,15 @@
             app:layout_constraintStart_toEndOf="@+id/profile_image"
             >
         </Constraint>
+
+        <Constraint
+            android:id="@+id/cv_fragment_status"
+            >
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+
     </ConstraintSet>
 
 </MotionScene>
